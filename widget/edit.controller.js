@@ -18,13 +18,6 @@
     $scope.onChangeModuleType = onChangeModuleType;
     $scope.config.moduleType = $scope.config.moduleType ? $scope.config.moduleType : 'Across Modules';
 
-    $scope.$watch('config.resource', function (oldValue, newValue) {
-      if ($scope.config.resource && oldValue !== newValue) {
-        delete $scope.config.query.filters;
-        $scope.loadAttributes();
-      }
-    });
-
     function _handleTranslations() {
       let widgetNameVersion = widgetUtilityService.getWidgetNameVersion($scope.$resolve.widget, $scope.$resolve.widgetBasePath);
 
@@ -62,8 +55,6 @@
 
     function onChangeModuleType() {
       delete $scope.config.query;
-      delete $scope.config.customModuleField;
-      delete $scope.config.customModule;
     }
 
     function init() {
