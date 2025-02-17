@@ -1,7 +1,6 @@
-<!-- Copyright start
-  Copyright (C) 2008 - 2025 Fortinet Inc.
-  All rights reserved.
-  FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
+<!-- Copyright start 
+  MIT License 
+  Copyright (c) 2025 Fortinet Inc 
   Copyright end -->
 <form data-ng-submit="save()" class="noMargin" name="editDataVisualizationForm"
     data-ng-class="{'state-wait': processing }" novalidate>
@@ -62,28 +61,50 @@
             <!-- Radio Button End -->
         </div>
 
-        <div data-ng-if="config.moduleType === 'Across Modules'">
-            <!-- Resource/Source -->
-            <div class="form-group"
-                data-ng-class="{ 'has-error': editDataVisualizationForm.resource.$invalid && editDataVisualizationForm.resource.$touched }"
-                data-ng-if="modules">
-                <label for="resource" class="control-label">Source<span class="text-danger">*</span>
+        <!-- Resource/Source -->
+        <div class="form-group"
+            data-ng-class="{ 'has-error': editDataVisualizationForm.resource.$invalid && editDataVisualizationForm.resource.$touched }"
+            data-ng-if="modules">
+            <label for="resource" class="control-label">Source<span class="text-danger">*</span>
                         <span data-uib-tooltip="Select the module whose records are to be visualize." data-tooltip-append-to-body="true">
                           <i class="margin-left-sm icon icon-information font-Size-13"></i>
                         </span>
                       </label>
-                <select name="resource" id="resource" class="form-control"
+            <select name="resource" id="resource" class="form-control"
                         data-ng-options="module.type as module.name for module in modules" data-ng-model="config.resource"
                         data-ng-change="loadAttributes()" required>
                         <option value="">Select an Option</option>
                       </select>
-                <div data-cs-messages="editDataVisualizationForm.resource"></div>
+            <div data-cs-messages="editDataVisualizationForm.resource"></div>
+        </div>
+
+        <!-- To fetch from single JSON Record -->
+        <div data-ng-if="config.moduleType === 'Single Module'">
+            <!-- Object/JSON Field -->
+            <div class="form-group"
+                data-ng-class="{ 'has-error': editDataVisualizationForm.objectField.$invalid && editDataVisualizationForm.objectField.$touched }"
+                data-ng-if="modules && config.resource">
+                <label for="objectField" class="control-label">Select JSON Field<span class="text-danger">*</span>
+                    <span data-uib-tooltip="Select the Field which has the data, only json type fields will be available in the dropdown." data-tooltip-append-to-body="true">
+                      <i class="margin-left-sm icon icon-information font-Size-13"></i>
+                    </span>
+                </label>
+                <select name="objectField" id="objectField" class="form-control"
+                    data-ng-options="field.name as field.title for field in objectFields | orderBy: 'title'"
+                    data-ng-model="config.objectField" required>
+                    <option value="">Select an Option</option>
+                </select>
+                <div data-cs-messages="editDataVisualizationForm.objectField"></div>
             </div>
+        </div>
+
+        <!-- Live Data -->
+        <div data-ng-if="config.moduleType === 'Across Modules'">
 
             <!-- Level 1 -->
             <div class="form-group"
                 data-ng-class="{ 'has-error': editDataVisualizationForm.l1PickListField.$invalid && editDataVisualizationForm.l1PickListField.$touched }"
-                data-ng-if="modules">
+                data-ng-if="modules && config.resource">
                 <label for="l1PickListField" class="control-label">Level 1<span class="text-danger">*</span>
                     <span data-uib-tooltip="Select the picklist to group the records in the selected module." data-tooltip-append-to-body="true">
                       <i class="margin-left-sm icon icon-information font-Size-13"></i>
@@ -91,7 +112,7 @@
                 </label>
                 <select name="l1PickListField" id="l1PickListField" class="form-control"
                     data-ng-options="field.name as field.title for field in pickListFields | orderBy: 'title'"
-                    data-ng-model="config.l1PickListField" data-ng-change="updatePicklistItems()" required>
+                    data-ng-model="config.l1PickListField" required>
                     <option value="">Select an Option</option>
                 </select>
                 <div data-cs-messages="editDataVisualizationForm.l1PickListField"></div>
@@ -100,7 +121,7 @@
             <!-- Level 2 -->
             <div class="form-group"
                 data-ng-class="{ 'has-error': editDataVisualizationForm.l2PickListField.$invalid && editDataVisualizationForm.l2PickListField.$touched }"
-                data-ng-if="modules">
+                data-ng-if="modules && config.resource">
                 <label for="l2PickListField" class="control-label">Level 2<span class="text-danger">*</span>
                     <span data-uib-tooltip="Select the picklist to group the records in the selected module." data-tooltip-append-to-body="true">
                       <i class="margin-left-sm icon icon-information font-Size-13"></i>
@@ -108,7 +129,7 @@
                 </label>
                 <select name="l2PickListField" id="l2PickListField" class="form-control"
                     data-ng-options="field.name as field.title for field in pickListFields | orderBy: 'title'"
-                    data-ng-model="config.l2PickListField" data-ng-change="updatePicklistItems()" required>
+                    data-ng-model="config.l2PickListField" required>
                     <option value="">Select an Option</option>
                 </select>
                 <div data-cs-messages="editDataVisualizationForm.l2PickListField"></div>
@@ -117,7 +138,7 @@
             <!-- Level 3 -->
             <div class="form-group"
                 data-ng-class="{ 'has-error': editDataVisualizationForm.l3PickListField.$invalid && editDataVisualizationForm.l3PickListField.$touched }"
-                data-ng-if="modules">
+                data-ng-if="modules && config.resource">
                 <label for="l3PickListField" class="control-label">Level 3<span class="text-danger">*</span>
                     <span data-uib-tooltip="Select the picklist to group the records in the selected module." data-tooltip-append-to-body="true">
                       <i class="margin-left-sm icon icon-information font-Size-13"></i>
@@ -125,28 +146,28 @@
                 </label>
                 <select name="l3PickListField" id="l3PickListField" class="form-control"
                     data-ng-options="field.name as field.title for field in pickListFields | orderBy: 'title'"
-                    data-ng-model="config.l3PickListField" data-ng-change="updatePicklistItems()" required>
+                    data-ng-model="config.l3PickListField" required>
                     <option value="">Select an Option</option>
                 </select>
                 <div data-cs-messages="editDataVisualizationForm.l3PickListField"></div>
             </div>
+        </div>
 
-            <!-- Spinner -->
-            <cs-spinner data-ng-show="config.resource && (!fieldsArray || fieldsArray.length === 0)"></cs-spinner>
+        <!-- Spinner -->
+        <cs-spinner data-ng-show="config.resource && (!fieldsArray || fieldsArray.length === 0)"></cs-spinner>
 
-            <!-- Filter Criteria -->
-            <div data-ng-hide="!fieldsArray || fieldsArray.length === 0">
-                <div class="form-group"
-                    data-ng-class="{ 'has-error': editDataVisualizationForm.filters.$invalid && editDataVisualizationForm.filters.$touched }">
-                    <label for="filters" class="control-label">Filter Criteria</label>
-                    <div data-cs-conditional data-ng-if="fieldsArray.length > 0" data-fields="$parent.fields"
-                        data-mode="'queryFilters'" data-ng-model="$parent.config.query"
-                        data-parent-form="editDataVisualizationForm"
-                        data-enable-expression="(page==='dashboard' || page==='reporting')"
-                        data-reset-field="$parent.fields" data-show-uuid="true"
-                        data-form-name="'editDataVisualizationForm'"></div>
-                    <div data-cs-messages="editDataVisualizationForm.filters"></div>
-                </div>
+        <!-- Filter Criteria -->
+        <div data-ng-hide="!config.resource || !fieldsArray || fieldsArray.length === 0">
+            <div class="form-group"
+                data-ng-class="{ 'has-error': editDataVisualizationForm.filters.$invalid && editDataVisualizationForm.filters.$touched }">
+                <label for="filters" class="control-label">Filter Criteria</label>
+                <div data-cs-conditional data-ng-if="fieldsArray.length > 0" data-fields="$parent.fields"
+                    data-mode="'queryFilters'" data-ng-model="$parent.config.query"
+                    data-parent-form="editDataVisualizationForm"
+                    data-enable-expression="(page==='dashboard' || page==='reporting')"
+                    data-reset-field="$parent.fields" data-show-uuid="true"
+                    data-form-name="'editDataVisualizationForm'"></div>
+                <div data-cs-messages="editDataVisualizationForm.filters"></div>
             </div>
         </div>
     </div>

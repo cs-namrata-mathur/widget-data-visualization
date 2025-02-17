@@ -1,7 +1,6 @@
-/* Copyright start
-  Copyright (C) 2008 - 2025 Fortinet Inc.
-  All rights reserved.
-  FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
+/* Copyright start 
+  MIT License 
+  Copyright (c) 2025 Fortinet Inc 
   Copyright end */
 'use strict';
 (function () {
@@ -17,6 +16,7 @@
     $scope.config = config;
     $scope.loadAttributes = loadAttributes;
     $scope.onChangeModuleType = onChangeModuleType;
+    $scope.config.moduleType = $scope.config.moduleType ? $scope.config.moduleType : 'Across Modules';
 
     $scope.$watch('config.resource', function (oldValue, newValue) {
       if ($scope.config.resource && oldValue !== newValue) {
@@ -24,10 +24,6 @@
         $scope.loadAttributes();
       }
     });
-
-    if ($scope.config.resource) {
-      $scope.loadAttributes();
-    }
 
     function _handleTranslations() {
       let widgetNameVersion = widgetUtilityService.getWidgetNameVersion($scope.$resolve.widget, $scope.$resolve.widgetBasePath);
@@ -50,24 +46,14 @@
      */
     function loadAttributes() {
       $scope.pickListFields = [];
-      $scope.iconFields = [];
       var entity = new Entity($scope.config.resource);
       entity.loadFields().then(function () {
         $scope.fieldsArray = entity.getFormFieldsArray();
         $scope.pickListFields = _.filter($scope.fieldsArray, function (field) {
           return field.type === 'picklist' && field.options;
         });
-        // $scope.iconFields = _.filter($scope.fieldsArray, function (field) {
-        //   return field.type === 'lookup';
-        // });
-        // $scope.userField = _.filter($scope.fieldsArray, function (field) {
-        //   return field.type !== 'manyToMany' && field.model === 'people';
-        // });
-        if ($scope.config.pickListField) {
-          getPicklistItems();
-        }
-        $scope.titleFields = _.filter($scope.fieldsArray, function (field) {
-          return field.type === 'text';
+        $scope.objectFields = _.filter($scope.fieldsArray, function (field) {
+          return field.type === 'object';
         });
         $scope.fields = entity.getFormFields();
         angular.extend($scope.fields, entity.getRelationshipFields());
@@ -89,6 +75,9 @@
       });
       appModulesService.load(true).then(function (modules) {
         $scope.modules = modules;
+        if ($scope.config.resource) {
+          $scope.loadAttributes();
+        }
       });
     }
 

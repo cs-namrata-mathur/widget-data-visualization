@@ -1,7 +1,6 @@
-/* Copyright start
-  Copyright (C) 2008 - 2025 Fortinet Inc.
-  All rights reserved.
-  FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
+/* Copyright start 
+  MIT License 
+  Copyright (c) 2025 Fortinet Inc 
   Copyright end */
 'use strict';
 (function () {
@@ -9,9 +8,9 @@
     .module('cybersponse')
     .controller('dataVisualization100Ctrl', dataVisualization100Ctrl);
 
-  dataVisualization100Ctrl.$inject = ['$scope', 'widgetUtilityService', 'config', '$timeout', '$http', '$q', 'dataVisualizationService'];
+  dataVisualization100Ctrl.$inject = ['$scope', 'widgetUtilityService', 'config', '$timeout', '$http', 'PagedCollection', 'dataVisualizationService'];
 
-  function dataVisualization100Ctrl($scope, widgetUtilityService, config, $timeout, $http, $q, dataVisualizationService) {
+  function dataVisualization100Ctrl($scope, widgetUtilityService, config, $timeout, $http, PagedCollection, dataVisualizationService) {
 
     $scope.config = config;
     var _config = angular.copy(config);
@@ -36,11 +35,16 @@
         useDirtyRect: false
       });
       $scope.option = undefined;
-      // $scope.viewToggle = false;
-
-      // renderTreemap();
       setFilter();
-      dataVisualizationService.fetchData(_config).then(function (result) {
+      if ($scope.config.moduleType === 'Single Module') {
+        processStaticChartData();
+      } else {
+        processLiveChartData();
+      }
+    }
+
+    function processLiveChartData() {
+      dataVisualizationService.fetchLiveData(_config).then(function (result) {
         if (result && result['hydra:member']) {
           if (result['hydra:member'].length === 0) {
             errorMessage = "No records found!";
@@ -55,6 +59,30 @@
       });
     }
 
+    function processStaticChartData() {
+      dataVisualizationService.fetchStaticData(_config).then(function (result) {
+        if (result && result['hydra:member']) {
+          if (result['hydra:member'].length === 0) {
+            errorMessage = "No records found!";
+            renderNoRecordMessage();
+          }
+          else {
+            var data = result['hydra:member'][0][$scope.config.objectField];
+            if (!data) {
+              data = {};
+            } else {
+              if ($scope.config.vizType === 'treemap') {
+                renderTreemapData(data);
+              } else if ($scope.config.vizType === 'sunburst') {
+                renderSunburst(data);
+              }
+            }
+          }
+        }
+      }).finally(function () {
+        $scope.processing = false;
+      });
+    }
     /*
      * This method create filter JSON as per selection in configuration to send
      * as a part of request payload.
@@ -88,7 +116,6 @@
     };
 
     function formMapData(data) {
-      // console.log(data);
       const inputJSON = {
         "mapData": data
       }
@@ -114,7 +141,6 @@
         }
         obj[level1][level2][level3]['$count'] = record.total;
 
-        // obj[level1][level2] = { ...obj[level1][level2], ...obj[level1][level2][level3] }
         obj[level1][level2]['$count'] = obj[level1][level2]['$count'] ? (obj[level1][level2]['$count'] + record.total) : record.total;
 
         obj[level1]['$count'] = obj[level1]['$count'] ? (obj[level1]['$count'] + record.total) : record.total;
@@ -122,7 +148,6 @@
         return obj;
       }, {});
 
-      // console.log(formedData);
       if ($scope.config.vizType === 'treemap') {
         renderTreemapData(formedData);
       } else if ($scope.config.vizType === 'sunburst') {
@@ -159,45 +184,31 @@
       };
       convert(rawData, data, '');
       data.children = data.children.filter(children => children.name !== "");
-      console.log('---- Converted SunBurst Data-----');
-      console.log(data);
-      console.log('------------------------');
       $scope.option = {
-          // visualMap: {
-          //   type: 'continuous',
-          //   min: 0,
-          //   max: 10,
-          //   inRange: {
-          //     color: ['#2F93C8', '#AEC48F', '#FFDB5C', '#F98862']
+        series: {
+          type: 'sunburst',
+          height: "80%",
+          width: "80%",
+          data: data.children,
+          label: {
+            rotate: 'tangential', // 'radial'
+            formatter: '{b}\n\n{c}'
+          },
+          labelLayout: { hideOverlap: true },
+          // emphasis: {
+          //   label: {
+          //     formatter: '\n{b}\n\n{c}'
           //   }
           // },
-          series: {
-            type: 'sunburst',
-            // data: data,
-            height: "80%",
-            width: "80%",
-            // data: rawData.data.children,
-            data: data.children,
-            // radius: [0, '90%'],
-            label: {
-              rotate: 'tangential', // 'radial'
-              formatter: '{b}\n\n{c}'
-            },
-            labelLayout: { hideOverlap: true },
-            emphasis: {
-              label: {
-                formatter: '\n{b}\n\n{c}'
-              }
-            },
-            downplay: {
-              label: {
-                formatter: '\n{b}\n\n{c}'
-              }
+          // downplay: {
+          //   label: {
+          //     formatter: '\n{b}\n\n{c}'
+          //   }
+          // }
         }
-          }
-        };
+      };
 
-        $scope.option && $scope.myChart.setOption($scope.option);
+      $scope.option && $scope.myChart.setOption($scope.option);
     }
 
     function renderTreemapData(rawData) {
@@ -229,16 +240,8 @@
       };
       convert(rawData, data, '');
       data.children = data.children.filter(children => children.name !== "");
-      console.log('---- Converted Data-----');
-      console.log(data);
-      console.log('------------------------');
       $scope.myChart.setOption(
         ($scope.option = {
-          //title: {
-          //  text: 'ECharts Options',
-          //  subtext: 'Treemap',
-          //  left: 'leafDepth'
-          //},
           tooltip: {},
           series: [
             {
@@ -281,89 +284,6 @@
       $scope.option && $scope.myChart.setOption($scope.option);
     }
 
-    function renderTreemap() {
-      $scope.myChart.showLoading();
-      // $.getJSON('widgets/development/customEcharts-1.0.0/widgetAssets/treemapData.json', function (rawData) {
-      $http.get('widgets/development/customEcharts-1.0.0/widgetAssets/treemapSOARData.json').then(function (rawData) {
-        $scope.myChart.hideLoading();
-        function convert(source, target, basePath) {
-          for (let key in source) {
-            let path = basePath ? basePath + ' > ' + key : key;
-            if (!key.match(/^\$/)) {
-              target.children = target.children || [];
-              const child = {
-                name: path
-              };
-              target.children.push(child);
-              convert(source[key], child, path);
-            }
-          }
-          if (!target.children) {
-            target.value = source.$count || 1;
-          } else {
-            target.children.push({
-              name: basePath,
-              value: source.$count
-            });
-          }
-        }
-        const data = {
-          children: []
-        };
-        convert(rawData.data, data, '');
-        $scope.myChart.setOption(
-          ($scope.option = {
-            title: {
-              text: 'ECharts Options',
-              subtext: 'Treemap',
-              left: 'leafDepth'
-            },
-            tooltip: {},
-            series: [
-              {
-                name: 'option',
-                type: 'treemap',
-                visibleMin: 300,
-                data: data.children,
-                leafDepth: 2,
-                levels: [
-                  {
-                    itemStyle: {
-                      borderColor: '#555',
-                      borderWidth: 4,
-                      gapWidth: 4
-                    }
-                  },
-                  {
-                    colorSaturation: [0.3, 0.6],
-                    itemStyle: {
-                      borderColorSaturation: 0.7,
-                      gapWidth: 2,
-                      borderWidth: 2
-                    }
-                  },
-                  {
-                    colorSaturation: [0.3, 0.5],
-                    itemStyle: {
-                      borderColorSaturation: 0.6,
-                      gapWidth: 1
-                    }
-                  },
-                  {
-                    colorSaturation: [0.3, 0.5]
-                  }
-                ]
-              }
-            ]
-          })
-        );
-      });
-
-      $scope.option && $scope.myChart.setOption($scope.option);
-    }
-
-
-
     function init() {
       // To handle backward compatibility for widget
       _handleTranslations();
@@ -376,12 +296,9 @@
         $timeout(function () {
           window.AMDLoader = loader;
           window.define = define;
-          // getChartTypes();
           initializeChart();
-          // renderChart();
           $scope.processing = false;
         }, 5000);
-        // });
       });
     }
 

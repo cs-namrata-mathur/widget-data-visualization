@@ -19,7 +19,8 @@
 
         service = {
             loadJs: loadJs,
-            fetchData: fetchData
+            fetchLiveData: fetchLiveData,
+            fetchStaticData: fetchStaticData
         };
 
         // Load CDN JS files
@@ -40,7 +41,24 @@
             return fileLoadDefer.promise;
         }
 
-        function fetchData(_config) {
+        function fetchStaticData(_config) {
+            config = _config;
+            let resource = config.resource;
+            var defer = $q.defer();
+            var queryObject = {};
+            let dataFilters = config.query.filters ? angular.copy(config.query.filters) : {};
+            queryObject["filters"] = dataFilters;
+            var _queryObj = new Query(queryObject);
+            $http.post(API.QUERY + resource + '?$limit=30', _queryObj.getQuery(true)).then(function (response) {
+                defer.resolve(response.data);
+            }, function (error) {
+                defer.reject(error);
+            });
+
+            return defer.promise;
+        }
+
+        function fetchLiveData(_config) {
             config = _config;
             let resource = config.resource;
             var defer = $q.defer();
@@ -99,10 +117,9 @@
             });
 
             let dataFilters = config.query.filters ? angular.copy(config.query.filters) : {};
-            queryObject["filters"] = dataFilters;// [dataFilters];
+            queryObject["filters"] = dataFilters;
             var _queryObj = new Query(queryObject);
             $http.post(API.QUERY + resource + '?$limit=2147483647', _queryObj.getQuery(true)).then(function (response) {
-                // return response;
                 defer.resolve(response.data);
             }, function (error) {
                 defer.reject(error);

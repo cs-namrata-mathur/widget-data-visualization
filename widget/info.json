@@ -3,7 +3,6 @@
     "title": "Data Visualization",
     "subTitle": "Advance Dashboard Visualizations",
     "version": "1.0.0",
-    "publishedDate": 1738655194,
     "releaseNotes": "unavailable",
     "metadata": {
         "description": "Advanced dashboard visualization enables users to analyze and interpret complex datasets through dynamic, interactive, and visually rich graphical representations. Unlike basic dashboards, which rely on simple charts like bar and line graphs, advanced visualizations provide deeper insights.",
@@ -20,5 +19,6 @@
             "Utilities"
         ]
     },
+    "published_date": 1738655194,
     "development": false
 }
