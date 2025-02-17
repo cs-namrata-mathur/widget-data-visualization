@@ -1,0 +1,1130 @@
+{
+    "Critical": {
+        "$count": 2435,
+        "Beaconing": {
+            "$count": 123,
+            "Open" : {
+                "$count": 32
+            },
+            "Investigating" : {
+                "$count": 55
+            },
+            "Pending" : {
+                "$count": 5
+            },
+            "Closed" : {
+                "$count": 28
+            },
+            "Re-Opened" : {
+                "$count": 3
+            }
+        },
+        "Denial of Service": {
+            "$count": 213,
+            "Open" : {
+                "$count": 15
+            },
+            "Investigating" : {
+                "$count": 132
+            },
+            "Closed" : {
+                "$count": 66
+            }
+        },
+        "Command and Control": {
+            "$count": 35,
+            "Open" : {
+                "$count": 2
+            },
+            "Investigating" : {
+                "$count": 29
+            },
+            "Closed" : {
+                "$count": 3
+            },
+            "Re-Opened" : {
+                "$count": 1
+            }
+        },
+        "Compliance": {
+            "$count": 69,
+            "Open" : {
+                "$count": 9
+            },
+            "Investigating" : {
+                "$count": 20
+            },
+            "Pending" : {
+                "$count": 10
+            },
+            "Closed" : {
+                "$count": 26
+            },
+            "Re-Opened" : {
+                "$count": 4
+            }
+        },
+        "Brute Force Attempts": {
+            "$count": 44,
+            "Open" : {
+                "$count": 14
+            },
+            "Investigating" : {
+                "$count": 15
+            },
+            "Closed" : {
+                "$count": 15
+            }
+        },
+        "Lost / Stolen": {
+            "$count": 21,
+            "Open" : {
+                "$count": 2
+            },
+            "Investigating" : {
+                "$count": 5
+            },
+            "Pending" : {
+                "$count": 4
+            },
+            "Closed" : {
+                "$count": 10
+            }
+        },
+        "Data Exfiltration": {
+            "$count": 67,
+            "Open" : {
+                "$count": 21
+            },
+            "Investigating" : {
+                "$count": 6
+            },
+            "Pending" : {
+                "$count": 8
+            },
+            "Closed" : {
+                "$count": 32
+            }
+        },
+        "Domain User Created": {
+            "$count": 11,
+            "Open" : {
+                "$count": 1
+            },
+            "Investigating" : {
+                "$count": 5
+            },
+            "Pending" : {
+                "$count": 2
+            },
+            "Closed" : {
+                "$count": 3
+            }
+        },
+        "Lateral Movement": {
+            "$count": 5,
+            "Investigating" : {
+                "$count": 3
+            },
+            "Closed" : {
+                "$count": 2
+            }
+        },
+        "Firewall Configuration Change": {
+            "$count": 223,
+            "Open" : {
+                "$count": 53
+            },
+            "Investigating" : {
+                "$count": 60
+            },
+            "Pending" : {
+                "$count": 10
+            },
+            "Closed" : {
+                "$count": 100
+            }
+        },
+        "Malware": {
+            "$count": 432,
+            "Open" : {
+                "$count": 112
+            },
+            "Investigating" : {
+                "$count": 120
+            },
+            "Closed" : {
+                "$count": 100
+            }
+        },
+        "MITRE ATT&CK": {
+            "$count": 111,
+            "Open" : {
+                "$count": 30
+            },
+            "Investigating" : {
+                "$count": 51
+            },
+            "Pending" : {
+                "$count": 10
+            },
+            "Closed" : {
+                "$count": 15
+            },
+            "Re-Opened" : {
+                "$count": 5
+            }
+        },
+        "Phishing": {
+            "$count": 502,
+            "Open" : {
+                "$count": 101
+            },
+            "Investigating" : {
+                "$count": 251
+            },
+            "Closed" : {
+                "$count": 150
+            }
+        },
+        "Improper Disposal": {
+            "$count": 0
+        },
+        "Data Leakage": {
+            "$count": 12,
+            "Open" : {
+                "$count": 1
+            },
+            "Investigating" : {
+                "$count": 11
+            }
+        },
+        "Policy Violation": {
+            "$count": 47,
+            "Open" : {
+                "$count": 7
+            },
+            "Investigating" : {
+                "$count": 5
+            },
+            "Closed" : {
+                "$count": 35
+            }
+        },
+        "Ransomware": {
+            "$count": 195,
+            "Open" : {
+                "$count": 95
+            },
+            "Investigating" : {
+                "$count": 100
+            }
+        },
+        "Reconnaissance": {
+            "$count": 25,
+            "Open" : {
+                "$count": 5
+            },
+            "Investigating" : {
+                "$count": 10
+            },
+            "Pending" : {
+                "$count": 2
+            },
+            "Closed" : {
+                "$count": 8
+            }
+        },
+        "Suspicious Email": {
+            "$count": 167,
+            "Open" : {
+                "$count": 27
+            },
+            "Investigating" : {
+                "$count": 40
+            },
+            "Pending" : {
+                "$count": 10
+            },
+            "Closed" : {
+                "$count": 89
+            },
+            "Re-Opened" : {
+                "$count": 1
+            }
+        },
+        "Scheduled Task Created": {
+            "$count": 12,
+            "Open" : {
+                "$count": 0
+            },
+            "Investigating" : {
+                "$count": 12
+            }
+        },
+        "Password Reset": {
+            "$count": 6,
+            "Open" : {
+                "$count": 6
+            }
+        },
+        "Other / Unknown": {
+            "$count": 85,
+            "Open" : {
+                "$count": 11
+            },
+            "Investigating" : {
+                "$count": 64
+            },
+            "Closed" : {
+                "$count": 10
+            }
+        },
+        "S3 Policy Change": {
+            "$count": 2,
+            "Closed" : {
+                "$count": 2
+            }
+        },
+        "User Group Changed": {
+            "$count": 3,
+            "Investigating" : {
+                "$count": 3
+            }
+        },
+        "Sunburst": {
+            "$count": 5,
+            "Open" : {
+                "$count": 1
+            },
+            "Investigating" : {
+                "$count": 2
+            },
+            "Pending" : {
+                "$count": 2
+            }
+        },
+        "Concurrent Login": {
+            "$count": 10,
+            "Open" : {
+                "$count": 2
+            },
+            "Investigating" : {
+                "$count": 8
+            }
+        },
+        "Unstructured Feeds": {
+            "$count": 5,
+            "Pending" : {
+                "$count": 5
+            }
+        },
+        "Vulnerable Asset": {
+            "$count": 4,
+            "Open" : {
+                "$count": 4
+            }
+        },
+        "Actionable Threat Feeds": {
+            "$count": 1,
+            "Pending" : {
+                "$count": 1
+            }
+        }
+    },
+    "Low": {
+        "$count": 1268,
+        "Beaconing": {
+            "$count": 2,
+            "Open" : {
+                "$count": 2
+            }
+        },
+        "Denial of Service": {
+            "$count": 62,
+            "Open" : {
+                "$count": 12
+            },
+            "Investigating" : {
+                "$count": 25
+            },
+            "Pending" : {
+                "$count": 5
+            },
+            "Closed" : {
+                "$count": 20
+            }
+        },
+        "Brute Force Attempts": {
+            "$count": 39,
+            "Open" : {
+                "$count": 9
+            },
+            "Investigating" : {
+                "$count": 10
+            },
+            "Closed" : {
+                "$count": 20
+            }
+        },
+        "Lost / Stolen": {
+            "$count": 8,
+            "Closed" : {
+                "$count": 8
+            }
+        },
+        "Data Exfiltration": {
+            "$count": 92,
+            "Open" : {
+                "$count": 32
+            },
+            "Investigating" : {
+                "$count": 55
+            },
+            "Pending" : {
+                "$count": 5
+            }
+        },
+        "Domain User Created": {
+            "$count": 5,
+            "Open" : {
+                "$count": 5
+            }
+        },
+        "Firewall Configuration Change": {
+            "$count": 32,
+            "Open" : {
+                "$count": 2
+            },
+            "Investigating" : {
+                "$count": 25
+            },
+            "Closed" : {
+                "$count": 5
+            }
+        },
+        "Malware": {
+            "$count": 213,
+            "Open" : {
+                "$count": 53
+            },
+            "Investigating" : {
+                "$count": 102
+            },
+            "Closed" : {
+                "$count": 58
+            }
+        },
+        "MITRE ATT&CK": {
+            "$count": 93,
+            "Open" : {
+                "$count": 20
+            },
+            "Investigating" : {
+                "$count": 33
+            },
+            "Closed" : {
+                "$count": 35
+            },
+            "Re-Opened" : {
+                "$count": 5
+            }
+        },
+        "Phishing": {
+            "$count": 255,
+            "Open" : {
+                "$count": 5
+            },
+            "Investigating" : {
+                "$count": 100
+            },
+            "Closed" : {
+                "$count": 150
+            }
+        },
+        "Improper Disposal": {
+            "$count": 54,
+            "Open" : {
+                "$count": 32
+            },
+            "Investigating" : {
+                "$count": 22
+            }
+        },
+        "Data Leakage": {
+            "$count": 2,
+            "Closed" : {
+                "$count": 2
+            }
+        },
+        "Policy Violation": {
+            "$count": 6,
+            "Open" : {
+                "$count": 3
+            },
+            "Investigating" : {
+                "$count": 3
+            }
+        },
+        "Ransomware": {
+            "$count": 22,
+            "Open" : {
+                "$count": 12
+            },
+            "Investigating" : {
+                "$count": 5
+            },
+            "Closed" : {
+                "$count": 5
+            }
+        },
+        "Suspicious Email": {
+            "$count": 71,
+            "Open" : {
+                "$count": 11
+            },
+            "Investigating" : {
+                "$count": 55
+            },
+            "Pending" : {
+                "$count": 5
+            }
+        },
+        "Other / Unknown": {
+            "$count": 312,
+            "Open" : {
+                "$count": 162
+            },
+            "Investigating" : {
+                "$count": 100
+            },
+            "Closed" : {
+                "$count": 50
+            }
+        }
+    },
+    "Minimal": {
+        "$count": 1830,
+        "Brute Force Attempts": {
+            "$count": 332,
+            "Open" : {
+                "$count": 32
+            },
+            "Investigating" : {
+                "$count": 50
+            },
+            "Pending" : {
+                "$count": 50
+            },
+            "Closed" : {
+                "$count": 190
+            },
+            "Re-Opened" : {
+                "$count": 10
+            }
+        },
+        "Lost / Stolen": {
+            "$count": 54,
+            "Open" : {
+                "$count": 32
+            },
+            "Investigating" : {
+                "$count": 22
+            }
+        },
+        "Data Exfiltration": {
+            "$count": 92,
+            "Open" : {
+                "$count": 32
+            },
+            "Investigating" : {
+                "$count": 55
+            },
+            "Pending" : {
+                "$count": 5
+            }
+        },
+        "MITRE ATT&CK": {
+            "$count": 102,
+            "Open" : {
+                "$count": 32
+            },
+            "Investigating" : {
+                "$count": 5
+            },
+            "Closed" : {
+                "$count": 65
+            }
+        },
+        "Phishing": {
+            "$count": 317,
+            "Open" : {
+                "$count": 117
+            },
+            "Investigating" : {
+                "$count": 50
+            },
+            "Closed" : {
+                "$count": 150
+            }
+        },
+        "Improper Disposal": {
+            "$count": 18,
+            "Open" : {
+                "$count": 8
+            },
+            "Closed" : {
+                "$count": 10
+            }
+        },
+        "Data Leakage": {
+            "$count": 48,
+            "Open" : {
+                "$count": 8
+            },
+            "Investigating" : {
+                "$count": 10
+            },
+            "Pending" : {
+                "$count": 5
+            },
+            "Closed" : {
+                "$count": 25
+            }
+        },
+        "Policy Violation": {
+            "$count": 72,
+            "Open" : {
+                "$count": 32
+            },
+            "Investigating" : {
+                "$count": 12
+            },
+            "Pending" : {
+                "$count": 8
+            },
+            "Closed" : {
+                "$count": 20
+            }
+        },
+        "Ransomware": {
+            "$count": 85,
+            "Open" : {
+                "$count": 5
+            },
+            "Closed" : {
+                "$count": 80
+            }
+        },
+        "Reconnaissance": {
+            "$count": 2,
+            "Open" : {
+                "$count": 2
+            }
+        },
+        "Suspicious Email": {
+            "$count": 211,
+            "Open" : {
+                "$count": 61
+            },
+            "Investigating" : {
+                "$count": 50
+            },
+            "Closed" : {
+                "$count": 100
+            }
+        },
+        "User Group Changed": {
+            "$count": 91,
+            "Open" : {
+                "$count": 1
+            },
+            "Investigating" : {
+                "$count": 40
+            },
+            "Closed" : {
+                "$count": 50
+            }
+        },
+        "Sunburst": {
+            "$count": 4,
+            "Pending" : {
+                "$count": 4
+            }
+        },
+        "Concurrent Login": {
+            "$count": 22,
+            "Open" : {
+                "$count": 12
+            },
+            "Investigating" : {
+                "$count": 10
+            }
+        },
+        "Other / Unknown": {
+            "$count": 300,
+            "Open" : {
+                "$count": 167
+            },
+            "Investigating" : {
+                "$count": 33
+            },
+            "Pending" : {
+                "$count": 50
+            },
+            "Closed" : {
+                "$count": 25
+            },
+            "Re-Opened" : {
+                "$count": 25
+            }
+        },
+        "Unstructured Feeds": {
+            "$count": 9,
+            "Open" : {
+                "$count": 9
+            }
+        },
+        "Vulnerable Asset": {
+            "$count": 71,
+            "Open" : {
+                "$count": 16
+            },
+            "Investigating" : {
+                "$count": 55
+            }
+        }
+    },
+    "Medium": {
+        "$count": 987,
+        "Beaconing": {
+            "$count": 11,
+            "Investigating" : {
+                "$count": 11
+            }
+        },
+        "Denial of Service": {
+            "$count": 54,
+            "Open" : {
+                "$count": 4
+            },
+            "Investigating" : {
+                "$count": 20
+            },
+            "Closed" : {
+                "$count": 30
+            }
+        },
+        "Command and Control": {
+            "$count": 34,
+            "Open" : {
+                "$count": 30
+            },
+            "Closed" : {
+                "$count": 4
+            }
+        },
+        "Brute Force Attempts": {
+            "$count": 76,
+            "Open" : {
+                "$count": 6
+            },
+            "Investigating" : {
+                "$count": 30
+            },
+            "Closed" : {
+                "$count": 40
+            }
+        },
+        "Lost / Stolen": {
+            "$count": 99,
+            "Pending" : {
+                "$count": 10
+            },
+            "Closed" : {
+                "$count": 80
+            }
+        },
+        "Data Exfiltration": {
+            "$count": 12,
+            "Closed" : {
+                "$count": 8
+            },
+            "Re-Opened" : {
+                "$count": 4
+            }
+        },
+        "MITRE ATT&CK": {
+            "$count": 52,
+            "Open" : {
+                "$count": 12
+            },
+            "Pending" : {
+                "$count": 40
+            }
+        },
+        "Phishing": {
+            "$count": 103,
+            "Open" : {
+                "$count": 8
+            },
+            "Investigating" : {
+                "$count": 48
+            },
+            "Pending" : {
+                "$count": 5
+            },
+            "Closed" : {
+                "$count": 40
+            },
+            "Re-Opened" : {
+                "$count": 2
+            }
+        },
+        "Improper Disposal": {
+            "$count": 2,
+            "Open" : {
+                "$count": 2
+            }
+        },
+        "Data Leakage": {
+            "$count": 44,
+            "Open" : {
+                "$count": 5
+            },
+            "Investigating" : {
+                "$count": 9
+            },
+            "Closed" : {
+                "$count": 30
+            }
+        },
+        "Policy Violation": {
+            "$count": 21,
+            "Open" : {
+                "$count": 1
+            },
+            "Closed" : {
+                "$count": 10
+            }
+        },
+        "Ransomware": {
+            "$count": 76,
+            "Open" : {
+                "$count": 16
+            },
+            "Investigating" : {
+                "$count": 55
+            },
+            "Pending" : {
+                "$count": 5
+            }
+        },
+        "Reconnaissance": {
+            "$count": 5,
+            "Open" : {
+                "$count": 5
+            }
+        },
+        "Suspicious Email": {
+            "$count": 92,
+            "Open" : {
+                "$count": 32
+            },
+            "Investigating" : {
+                "$count": 40
+            },
+            "Closed" : {
+                "$count": 20
+            }
+        },
+        "User Group Changed": {
+            "$count": 56,
+            "Open" : {
+                "$count": 32
+            },
+            "Closed" : {
+                "$count": 24
+            }
+        },
+        "Sunburst": {
+            "$count": 7,
+            "Open" : {
+                "$count": 7
+            }
+        },
+        "Other / Unknown": {
+            "$count": 150,
+            "Open" : {
+                "$count": 50
+            },
+            "Pending" : {
+                "$count": 100
+            }
+        },
+        "Concurrent Login": {
+            "$count": 62,
+            "Open" : {
+                "$count": 32
+            },
+            "Investigating" : {
+                "$count": 10
+            },
+            "Pending" : {
+                "$count": 20
+            }
+        },
+        "Unstructured Feeds": {
+            "$count": 22,
+            "Open" : {
+                "$count": 2
+            },
+            "Investigating" : {
+                "$count": 20
+            }
+        },
+        "Vulnerable Asset": {
+            "$count": 9,
+            "Open" : {
+                "$count": 0
+            },
+            "Closed" : {
+                "$count": 9
+            }
+        }
+    },
+    "High": {
+        "$count": 1209,
+        "Command and Control": {
+            "$count": 22,
+            "Open" : {
+                "$count": 2
+            },
+            "Closed" : {
+                "$count": 20
+            }
+        },
+        "Compliance": {
+            "$count": 43,
+            "Open" : {
+                "$count": 13
+            },
+            "Investigating" : {
+                "$count": 30
+            }
+        },
+        "Brute Force Attempts": {
+            "$count": 11,
+            "Open" : {
+                "$count": 1
+            },
+            "Closed" : {
+                "$count": 10
+            }
+        },
+        "Lost / Stolen": {
+            "$count": 3,
+            "Open" : {
+                "$count": 3
+            }
+        },
+        "Data Exfiltration": {
+            "$count": 111,
+            "Open" : {
+                "$count": 11
+            },
+            "Investigating" : {
+                "$count": 55
+            },
+            "Pending" : {
+                "$count": 5
+            },
+            "Closed" : {
+                "$count": 40
+            }
+        },
+        "Domain User Created": {
+            "$count": 4,
+            "Pending" : {
+                "$count": 4
+            }
+        },
+        "Lateral Movement": {
+            "$count": 28,
+            "Open" : {
+                "$count": 8
+            },
+            "Investigating" : {
+                "$count": 10
+            },
+            "Closed" : {
+                "$count": 10
+            }
+        },
+        "Firewall Configuration Change": {
+            "$count": 3,
+            "Closed" : {
+                "$count": 3
+            }
+        },
+        "Malware": {
+            "$count": 100,
+            "Open" : {
+                "$count": 15
+            },
+            "Investigating" : {
+                "$count": 35
+            },
+            "Pending" : {
+                "$count": 5
+            },
+            "Closed" : {
+                "$count": 45
+            }
+        },
+        "MITRE ATT&CK": {
+            "$count": 91,
+            "Open" : {
+                "$count": 31
+            },
+            "Investigating" : {
+                "$count": 40
+            },
+            "Pending" : {
+                "$count": 5
+            },
+            "Closed" : {
+                "$count": 12
+            },
+            "Re-Opened" : {
+                "$count": 3
+            }
+        },
+        "Phishing": {
+            "$count": 283,
+            "Open" : {
+                "$count": 33
+            },
+            "Investigating" : {
+                "$count": 100
+            },
+            "Closed" : {
+                "$count": 150
+            }
+        },
+        "Improper Disposal": {
+            "$count": 22,
+            "Open" : {
+                "$count": 2
+            },
+            "Closed" : {
+                "$count": 12
+            },
+            "Re-Opened" : {
+                "$count": 8
+            }
+        },
+        "Data Leakage": {
+            "$count": 1,
+            "Closed" : {
+                "$count": 1
+            }
+        },
+        "Policy Violation": {
+            "$count": 82,
+            "Open" : {
+                "$count": 22
+            },
+            "Investigating" : {
+                "$count": 5
+            },
+            "Pending" : {
+                "$count": 5
+            },
+            "Closed" : {
+                "$count": 50
+            }
+        },
+        "Ransomware": {
+            "$count": 104,
+            "Open" : {
+                "$count": 32
+            },
+            "Investigating" : {
+                "$count": 42
+            },
+            "Closed" : {
+                "$count": 30
+            }
+        },
+        "Reconnaissance": {
+            "$count": 6,
+            "Pending" : {
+                "$count": 5
+            },
+            "Re-Opened" : {
+                "$count": 1
+            }
+        },
+        "Other / Unknown": {
+            "$count": 100,
+            "Open" : {
+                "$count": 70
+            },
+            "Closed" : {
+                "$count": 30
+            }
+        },
+        "Suspicious Email": {
+            "$count": 195,
+            "Open" : {
+                "$count": 5
+            },
+            "Investigating" : {
+                "$count": 40
+            },
+            "Closed" : {
+                "$count": 150
+            }
+        }
+    },
+    "None": {
+        "$count": 121,
+        "Beaconing": {
+            "$count": 10,
+            "Pending" : {
+                "$count": 10
+            }
+        },
+        "Other / Unknown": {
+            "$count": 80,
+            "Open" : {
+                "$count": 78
+            },
+            "Closed" : {
+                "$count": 2
+            }
+        },
+        "Vulnerable Asset": {
+            "$count": 15,
+            "Open" : {
+                "$count": 15
+            }
+        },
+        "Scheduled Task Created": {
+            "$count":8,
+            "Open" : {
+                "$count": 8
+            }
+        },
+        "Password Reset": {
+            "$count": 8,
+            "Open" : {
+                "$count": 4
+            },
+            "Pending" : {
+                "$count": 4
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "vizTypes": [
+        {
+            "type": "treemap",
+            "title": "Tree Map"
+        },
+        {
+            "type":"sunburst",
+            "title":"Sunburst"
+        }
+    ]
+}
