@@ -155,44 +155,53 @@
       }
     }
 
-    function renderSunburst(rawData) {
-      function convert(source, target, basePath) {
-        for (let key in source) {
-          let path = basePath ? basePath + ' > ' + key : key;
-          if (!key.match(/^\$/)) {
-            target.children = target.children || [];
-            const child = {
-              name: path
-            };
-            target.children.push(child);
-            convert(source[key], child, path);
-          } else {
-            target.value = source.$count || 0;
-          }
-        }
-        if (!target.children) {
-          target.value = source.$count || 0;
+    function convert(source, target, basePath) {
+      for (let key in source) {
+        let path = basePath ? basePath + ' > ' + key : key;
+        if (!key.match(/^\$/)) {
+          target.children = target.children || [];
+          const child = {
+            name: path
+          };
+          target.children.push(child);
+          convert(source[key], child, path);
         } else {
-          target.children.push({
-            name: basePath,
-            value: source.$count
-          });
+          target.value = source.$count || 0;
         }
       }
+      if (!target.children) {
+        target.value = source.$count || 0;
+      }
+      else if ($scope.config.vizType === 'treemap') {
+       target.children.push({
+         name: basePath,
+         value: source.$count
+       });
+      }
+    }
+
+    function renderSunburst(rawData) {
       const data = {
         children: []
       };
       convert(rawData, data, '');
       data.children = data.children.filter(children => children.name !== "");
       $scope.option = {
+        textStyle: {
+          overflow: 'break'
+        },
         series: {
           type: 'sunburst',
           height: "80%",
           width: "80%",
           data: data.children,
           label: {
-            rotate: 'tangential', // 'radial'
-            formatter: '{b}\n\n{c}'
+            rotate: 'tangential', // 'tangential', // 'radial'
+            formatter: '{b}\n\n{c}',
+            //position: 'inside',
+            overflow: 'breakAll', // 'brake',
+            ellipsis: '...'
+            // align: 'center'
           },
           labelLayout: { hideOverlap: true },
           // emphasis: {
@@ -212,29 +221,6 @@
     }
 
     function renderTreemapData(rawData) {
-      function convert(source, target, basePath) {
-        for (let key in source) {
-          let path = basePath ? basePath + ' > ' + key : key;
-          if (!key.match(/^\$/)) {
-            target.children = target.children || [];
-            const child = {
-              name: path
-            };
-            target.children.push(child);
-            convert(source[key], child, path);
-          } else {
-            target.value = source.$count || 0;
-          }
-        }
-        if (!target.children) {
-          target.value = source.$count || 0;
-        } else {
-          target.children.push({
-            name: basePath,
-            value: source.$count
-          });
-        }
-      }
       const data = {
         children: []
       };
@@ -298,7 +284,7 @@
           window.define = define;
           initializeChart();
           $scope.processing = false;
-        }, 5000);
+        }, 3000);
       });
     }
 
