@@ -42,16 +42,14 @@
       var entity = new Entity($scope.config.resource);
       entity.loadFields().then(function () {
         $scope.fieldsArray = entity.getFormFieldsArray();
-        $scope.pickListFields = _.filter($scope.fieldsArray, function (field) {
-          return field.type === 'picklist' && field.options;
-        });
-        $scope.objectFields = _.filter($scope.fieldsArray, function (field) {
-          return field.type === 'object';
-        });
         $scope.fields = entity.getFormFields();
         angular.extend($scope.fields, entity.getRelationshipFields());
       });
     }
+
+    $scope.filterByPicklistOrTextType = function(field) {
+      return field.type === 'picklist' || field.type === 'text';
+    };
 
     function onChangeModuleType() {
       delete $scope.config.query;

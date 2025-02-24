@@ -47,7 +47,7 @@
             var defer = $q.defer();
             var queryObject = {};
             let dataFilters = config.query.filters ? angular.copy(config.query.filters) : {};
-            queryObject["filters"] = dataFilters;
+            queryObject['filters'] = dataFilters;
             var _queryObj = new Query(queryObject);
             $http.post(API.QUERY + resource + '?$limit=30', _queryObj.getQuery(true)).then(function (response) {
                 defer.resolve(response.data);
@@ -64,60 +64,82 @@
             var defer = $q.defer();
 
             var queryObject = {
-                sort: [{
-                    field: config.l1PickListField + '.orderIndex',
-                    direction: 'ASC'
-                }],
-                aggregates: [
-                    {
-                        'operator': 'count',
-                        'field': '*',
-                        'alias': 'total'
-                    }
-                ],
+                sort: [],
+                aggregates: [],
                 relationship: true
             };
-            // Push level 1 picklist in aggregation
-            queryObject.aggregates.push({
-                'operator': 'groupby',
-                'alias': config.l1PickListField,
-                'field': config.l1PickListField + '.itemValue'
-            });
-            queryObject.aggregates.push({
-                'operator': 'groupby',
-                'alias': 'l1Color',
-                'field': config.l1PickListField + '.color'
-            });
-            queryObject.aggregates.push({
-                'operator': 'groupby',
-                'alias': 'orderIndex',
-                'field': config.l1PickListField + '.orderIndex'
-            });
-            // Push level 2 picklist in aggregation
-            queryObject.aggregates.push({
-                'operator': 'groupby',
-                'alias': config.l2PickListField,
-                'field': config.l2PickListField + '.itemValue'
-            });
-            queryObject.aggregates.push({
-                'operator': 'groupby',
-                'alias': 'l2Color',
-                'field': config.l2PickListField + '.color'
-            });
-            // Push level 3 picklist in aggregation
-            queryObject.aggregates.push({
-                'operator': 'groupby',
-                'alias': config.l3PickListField,
-                'field': config.l3PickListField + '.itemValue'
-            });
-            queryObject.aggregates.push({
-                'operator': 'groupby',
-                'alias': 'l3Color',
-                'field': config.l3PickListField + '.color'
-            });
+
+            switch (config.vizType) {
+                case 'sunburst':
+                case 'treemap': 
+                {
+                    queryObject.sort.push({
+                        field: config.l1PickListField + '.orderIndex',
+                        direction: 'ASC'
+                    });
+                    queryObject.aggregates.push({
+                        operator: 'count',
+                        field: '*',
+                        alias: 'total'
+                    });
+                    // Push level 1 picklist in aggregation
+                    queryObject.aggregates.push({
+                        operator: 'groupby',
+                        alias: config.l1PickListField,
+                        field: config.l1PickListField + '.itemValue'
+                    });
+                    queryObject.aggregates.push({
+                        operator: 'groupby',
+                        alias: 'l1Color',
+                        field: config.l1PickListField + '.color'
+                    });
+                    queryObject.aggregates.push({
+                        operator: 'groupby',
+                        alias: 'orderIndex',
+                        field: config.l1PickListField + '.orderIndex'
+                    });
+                    // Push level 2 picklist in aggregation
+                    queryObject.aggregates.push({
+                        operator: 'groupby',
+                        alias: config.l2PickListField,
+                        field: config.l2PickListField + '.itemValue'
+                    });
+                    queryObject.aggregates.push({
+                        operator: 'groupby',
+                        alias: 'l2Color',
+                        field: config.l2PickListField + '.color'
+                    });
+                    // Push level 3 picklist in aggregation
+                    queryObject.aggregates.push({
+                        operator: 'groupby',
+                        alias: config.l3PickListField,
+                        field: config.l3PickListField + '.itemValue'
+                    });
+                    queryObject.aggregates.push({
+                        operator: 'groupby',
+                        alias: 'l3Color',
+                        field: config.l3PickListField + '.color'
+                    });
+                }
+                    break;
+                case 'wordCloud':
+                    {
+                        queryObject.aggregates.push({
+                            operator: 'count',
+                            field: '*',
+                            alias: 'value'
+                        });
+                        queryObject.aggregates.push({
+                            operator: 'groupby',
+                            alias: 'name',
+                            field: config.wordSource + '.itemValue'
+                        });
+                    }
+                    break;
+            }
 
             let dataFilters = config.query.filters ? angular.copy(config.query.filters) : {};
-            queryObject["filters"] = dataFilters;
+            queryObject['filters'] = dataFilters;
             var _queryObj = new Query(queryObject);
             $http.post(API.QUERY + resource + '?$limit=2147483647', _queryObj.getQuery(true)).then(function (response) {
                 defer.resolve(response.data);
