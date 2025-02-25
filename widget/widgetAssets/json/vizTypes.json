@@ -7,6 +7,10 @@
         {
             "type":"sunburst",
             "title":"Sunburst"
+        },
+        {
+            "type": "wordCloud",
+            "title": "Word Cloud"
         }
     ]
 }
