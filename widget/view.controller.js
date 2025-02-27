@@ -8,9 +8,9 @@
     .module('cybersponse')
     .controller('dataVisualization100Ctrl', dataVisualization100Ctrl);
 
-  dataVisualization100Ctrl.$inject = ['$scope', 'widgetUtilityService', 'config', '$timeout', '$http', 'PagedCollection', 'dataVisualizationService'];
+  dataVisualization100Ctrl.$inject = ['$scope', 'widgetUtilityService', 'config', '$timeout', 'dataVisualizationService', 'Entity'];
 
-  function dataVisualization100Ctrl($scope, widgetUtilityService, config, $timeout, $http, PagedCollection, dataVisualizationService) {
+  function dataVisualization100Ctrl($scope, widgetUtilityService, config, $timeout, dataVisualizationService, Entity) {
 
     $scope.config = config;
     var _config = angular.copy(config);
@@ -119,7 +119,7 @@
       }
 
       let formedData;
-      if ('wordCloud' === config.vizType) {
+      if (['wordCloud', 'heatMap'].indexOf(config.vizType) > -1) {
          formedData = data;
       } else {
         // Form Data for Map Rendering
@@ -303,6 +303,89 @@
       $scope.option && $scope.myChart.setOption($scope.option);
     }
 
+    function renderHeatmap(rawData) {
+      let heatMap = {
+        moduleName: '',
+        xAxis: [],
+        yAxis: [],
+        data: []
+      };
+      let entity = new Entity($scope.config.resource);
+      entity.loadFields().then(function() {
+        $scope.fields = entity.getFormFields();
+        heatMap.moduleName = entity.descriptions.plural ? entity.descriptions.plural : entity.descriptions.singular;
+        if ($scope.fields[_config.xAxis] && ('picklist' === $scope.fields[_config.xAxis].type)) {
+          ($scope.fields[_config.xAxis].options).forEach(option => {
+            heatMap.xAxis.push(option.itemValue);
+          });
+        } else if ($scope.fields[_config.xAxis] && ('datetime' === $scope.fields[_config.xAxis].type)) {
+
+        }
+        if ($scope.fields[_config.yAxis] && ('picklist' === $scope.fields[_config.yAxis].type)) {
+          ($scope.fields[_config.yAxis].options).forEach(option => {
+            heatMap.yAxis.push(option.itemValue);
+          });
+        } else if ($scope.fields[_config.yAxis] && ('datetime' === $scope.fields[_config.yAxis].type)) {
+
+        }
+        let max = 0;
+        heatMap.data = rawData.map(function(data) {
+          max = data['total'] > max ? data['total'] : max;
+          return [heatMap.xAxis.indexOf(data[config.xAxis]), heatMap.yAxis.indexOf(data[config.yAxis]), data['total'] || '-'];
+        });
+
+        $scope.option = {
+          tooltip: {
+            position: 'top'
+          },
+          grid: {
+            height: '50%',
+            top: '10%'
+          },
+          xAxis: {
+            type: 'category',
+            data: heatMap.xAxis,
+            splitArea: {
+              show: true
+            }
+          },
+          yAxis: {
+            type: 'category',
+            data: heatMap.yAxis,
+            splitArea: {
+              show: true
+            }
+          },
+          visualMap: {
+            min: 0,
+            max: max,
+            calculable: true,
+            orient: 'horizontal',
+            left: 'center',
+            bottom: '15%'
+          },
+          series: [
+            {
+              name: heatMap.moduleName,
+              type: 'heatmap',
+              data: heatMap.data,
+              label: {
+                show: true
+              },
+              emphasis: {
+                itemStyle: {
+                  shadowBlur: 10,
+                  shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+              }
+            }
+          ]
+        };
+
+        $scope.option && $scope.myChart.setOption($scope.option);
+      });
+    }
+
     function renderSelectedChart(formedData) {
       switch ($scope.config.vizType) {
         case 'treemap':
@@ -313,6 +396,9 @@
           break;
         case 'wordCloud':
           renderWordCloud(formedData);
+          break;
+        case 'heatMap': 
+          renderHeatmap(formedData);
           break;
       }
     }
@@ -326,12 +412,10 @@
       window.AMDLoader = {};
       window.define = {};
       dataVisualizationService.loadJs(['https://cdnjs.cloudflare.com/ajax/libs/echarts/5.6.0/echarts.min.js', 'https://cdn.jsdelivr.net/npm/echarts-wordcloud/dist/echarts-wordcloud.min.js', 'https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js']).then(function () {
-        $timeout(function () {
-          window.AMDLoader = loader;
-          window.define = define;
-          initializeChart();
-          $scope.processing = false;
-        }, 3000);
+        window.AMDLoader = loader;
+        window.define = define;
+        initializeChart();
+        $scope.processing = false;
       });
     }
 

@@ -9,9 +9,9 @@
         .module('cybersponse')
         .factory('dataVisualizationService', dataVisualizationService);
 
-    dataVisualizationService.$inject = ['$q', '$http', 'currentDateMinusService', 'Query', 'API', 'Entity'];
+    dataVisualizationService.$inject = ['$q', '$http', 'Query', 'API', 'WIDGET_BASE_PATH'];
 
-    function dataVisualizationService($q, $http, currentDateMinusService, Query, API, Entity) {
+    function dataVisualizationService($q, $http, Query, API, WIDGET_BASE_PATH) {
         var service;
         var config;
         var fileCount = 0;
@@ -20,7 +20,9 @@
         service = {
             loadJs: loadJs,
             fetchLiveData: fetchLiveData,
-            fetchStaticData: fetchStaticData
+            fetchStaticData: fetchStaticData,
+            loadVisualizationType: loadVisualizationType,
+            getDateFormat: getDateFormat
         };
 
         // Load CDN JS files
@@ -136,6 +138,25 @@
                         });
                     }
                     break;
+                case 'heatMap':
+                    {
+                        queryObject.aggregates.push({
+                            operator: 'count',
+                            field: '*',
+                            alias: 'total'
+                        });
+                        queryObject.aggregates.push({
+                            operator: 'groupby',
+                            alias: config.xAxis,
+                            field: config.xAxis + '.itemValue'
+                        });
+                        queryObject.aggregates.push({
+                            operator: 'groupby',
+                            alias: config.yAxis,
+                            field: config.yAxis + '.itemValue'
+                        });
+                    }
+                    break;
             }
 
             let dataFilters = config.query.filters ? angular.copy(config.query.filters) : {};
@@ -148,6 +169,26 @@
             });
 
             return defer.promise;
+        }
+
+        function loadVisualizationType() {
+            return $http.get(`${WIDGET_BASE_PATH.INSTALLED}dataVisualization-1.0.0/widgetAssets/json/vizTypes.json`);
+        }
+
+        function getDateFormat(timeScope) {
+            var format;
+            switch (timeScope) {
+                case 'day':
+                format = 'yyyy-MM-dd';
+                break;
+
+                default:
+                case 'month':
+                format = 'yyyy-MM-01';
+                break;
+            }
+
+            return format;
         }
 
         return service;

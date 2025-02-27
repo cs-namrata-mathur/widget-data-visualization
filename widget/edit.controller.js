@@ -8,9 +8,9 @@
     .module('cybersponse')
     .controller('editDataVisualization100Ctrl', editDataVisualization100Ctrl);
 
-  editDataVisualization100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', 'widgetUtilityService', '$timeout', '$http', 'appModulesService', 'Entity'];
+  editDataVisualization100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', 'widgetUtilityService', '$timeout', 'appModulesService', 'Entity', 'dataVisualizationService'];
 
-  function editDataVisualization100Ctrl($scope, $uibModalInstance, config, widgetUtilityService, $timeout, $http, appModulesService, Entity) {
+  function editDataVisualization100Ctrl($scope, $uibModalInstance, config, widgetUtilityService, $timeout, appModulesService, Entity, dataVisualizationService) {
     $scope.cancel = cancel;
     $scope.save = save;
     $scope.config = config;
@@ -51,6 +51,10 @@
       return field.type === 'picklist' || field.type === 'text';
     };
 
+    $scope.filterByPicklistOrDateType = function(field) {
+      return field.type === 'picklist' || field.type === 'datetime';
+    }
+
     function onChangeModuleType() {
       delete $scope.config.query;
     }
@@ -58,8 +62,8 @@
     function init() {
       // To handle backward compatibility for widget
       _handleTranslations();
-      // To Do: Move this call to service
-      $http.get('widgets/installed/dataVisualization-1.0.0/widgetAssets/json/vizTypes.json').then(function (response) {
+
+      dataVisualizationService.loadVisualizationType().then(function (response) {
         $scope.config.vizList = response.data.vizTypes;
       });
       appModulesService.load(true).then(function (modules) {

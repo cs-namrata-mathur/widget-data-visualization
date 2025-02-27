@@ -100,7 +100,8 @@
 
         <!-- Live Data -->
         <div data-ng-if="config.moduleType === 'Across Modules'">
-            <div data-ng-if="'wordCloud' !== config.vizType">
+            <!-- Config for Sunburst/Treemap -->
+            <div data-ng-if="['sunburst', 'treemap'].indexOf(config.vizType) > -1">
                 <!-- Level 1 -->
                 <div class="form-group"
                     data-ng-class="{ 'has-error': editDataVisualizationForm.l1PickListField.$invalid && editDataVisualizationForm.l1PickListField.$touched }"
@@ -152,6 +153,7 @@
                     <div data-cs-messages="editDataVisualizationForm.l3PickListField"></div>
                 </div>
             </div>
+            <!-- Config for Word Cloud -->
             <div data-ng-if="'wordCloud' === config.vizType">
                 <div class="form-group"
                     data-ng-class="{ 'has-error': editDataVisualizationForm.wordSource.$invalid && editDataVisualizationForm.wordSource.$touched }"
@@ -168,6 +170,73 @@
                     </select>
                     <div data-cs-messages="editDataVisualizationForm.wordSource"></div>
                 </div>
+            </div>
+            <!-- Config for Heatmap -->
+            <div data-ng-if="'heatMap' === config.vizType">
+                <div class="form-group"
+                    data-ng-class="{ 'has-error': editDataVisualizationForm.xAxis.$invalid && editDataVisualizationForm.xAxis.$touched }"
+                    data-ng-if="modules && config.resource">
+                    <label for="xAxis" class="control-label">X-axis<span class="text-danger">*</span>
+                        <span data-uib-tooltip="Select the picklist to group the records in the selected module." data-tooltip-append-to-body="true">
+                        <i class="margin-left-sm icon icon-information font-Size-13"></i>
+                        </span>
+                    </label>
+                    <select name="xAxis" id="xAxis" class="form-control"
+                        data-ng-options="field.name as field.title for field in fieldsArray | filter: filterByPicklistOrDateType | orderBy: 'title'"
+                        data-ng-model="config.xAxis" required>
+                        <option value="">Select an Option</option>
+                    </select>
+                    <div data-cs-messages="editDataVisualizationForm.xAxis"></div>
+                </div>
+                <!-- <div>
+                    <div class="form-group"
+                        data-ng-class="{ 'has-error': editDataVisualizationForm.xAxisTimeScope.$invalid && editDataVisualizationForm.xAxisTimeScope.$touched }"
+                        data-ng-if="modules && config.resource">
+                        <label for="xAxisTimeScope" class="control-label">X-axis<span class="text-danger">*</span>
+                            <span data-uib-tooltip="Select the picklist to group the records in the selected module." data-tooltip-append-to-body="true">
+                            <i class="margin-left-sm icon icon-information font-Size-13"></i>
+                            </span>
+                        </label>
+                        <select name="xAxisTimeScope" id="xAxisTimeScope" class="form-control"
+                            data-ng-options="field.name as field.title for field in fieldsArray | filter: filterByPicklistOrDateType | orderBy: 'title'"
+                            data-ng-model="config.xAxisTimeScope" required>
+                            <option value="">Select an Option</option>
+                        </select>
+                        <div data-cs-messages="editDataVisualizationForm.xAxisTimeScope"></div>
+                    </div>
+                </div> -->
+                <div class="form-group"
+                    data-ng-class="{ 'has-error': editDataVisualizationForm.yAxis.$invalid && editDataVisualizationForm.yAxis.$touched }"
+                    data-ng-if="modules && config.resource">
+                    <label for="yAxis" class="control-label">Y-axis<span class="text-danger">*</span>
+                        <span data-uib-tooltip="Select the picklist to group the records in the selected module." data-tooltip-append-to-body="true">
+                        <i class="margin-left-sm icon icon-information font-Size-13"></i>
+                        </span>
+                    </label>
+                    <select name="yAxis" id="yAxis" class="form-control"
+                        data-ng-options="field.name as field.title for field in fieldsArray | filter: filterByPicklistOrDateType | orderBy: 'title'"
+                        data-ng-model="config.yAxis" required>
+                        <option value="">Select an Option</option>
+                    </select>
+                    <div data-cs-messages="editDataVisualizationForm.yAxis"></div>
+                </div>
+                <!-- <div>
+                    <div class="form-group"
+                        data-ng-class="{ 'has-error': editDataVisualizationForm.yAxisTimeScope.$invalid && editDataVisualizationForm.yAxisTimeScope.$touched }"
+                        data-ng-if="modules && config.resource">
+                        <label for="yAxisTimeScope" class="control-label">X-axis<span class="text-danger">*</span>
+                            <span data-uib-tooltip="Select the picklist to group the records in the selected module." data-tooltip-append-to-body="true">
+                            <i class="margin-left-sm icon icon-information font-Size-13"></i>
+                            </span>
+                        </label>
+                        <select name="yAxisTimeScope" id="yAxisTimeScope" class="form-control"
+                            data-ng-options="field.name as field.title for field in fieldsArray | filter: filterByPicklistOrDateType | orderBy: 'title'"
+                            data-ng-model="config.yAxisTimeScope" required>
+                            <option value="">Select an Option</option>
+                        </select>
+                        <div data-cs-messages="editDataVisualizationForm.yAxisTimeScope"></div>
+                    </div>
+                </div> -->
             </div>
         </div>
 
