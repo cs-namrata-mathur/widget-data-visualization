@@ -8,9 +8,9 @@
     .module('cybersponse')
     .controller('dataVisualization100Ctrl', dataVisualization100Ctrl);
 
-  dataVisualization100Ctrl.$inject = ['$scope', 'widgetUtilityService', 'config', '$timeout', 'dataVisualizationService', 'Entity', 'CommonUtils'];
+  dataVisualization100Ctrl.$inject = ['$scope', 'widgetUtilityService', 'config', '$timeout', 'dataVisualizationService', 'Entity'];
 
-  function dataVisualization100Ctrl($scope, widgetUtilityService, config, $timeout, dataVisualizationService, Entity, CommonUtils) {
+  function dataVisualization100Ctrl($scope, widgetUtilityService, config, $timeout, dataVisualizationService, Entity) {
 
     $scope.config = config;
     var _config = angular.copy(config);
@@ -29,7 +29,7 @@
       // Dispose already rendered chart if available
       $scope.myChart && echarts.dispose($scope.myChart);
       $scope.chartDom = angular.element(document.getElementById('eChart-' + $scope.config.wid))[0];
-      $scope.myChart = echarts.init($scope.chartDom, 'dark', {
+      $scope.myChart = echarts.init($scope.chartDom, null, {
         renderer: 'canvas',
         useDirtyRect: false
       });
