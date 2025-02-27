@@ -8,13 +8,12 @@
     .module('cybersponse')
     .controller('dataVisualization100Ctrl', dataVisualization100Ctrl);
 
-  dataVisualization100Ctrl.$inject = ['$scope', 'widgetUtilityService', 'config', '$timeout', '$http', 'PagedCollection', 'dataVisualizationService'];
+  dataVisualization100Ctrl.$inject = ['$scope', 'widgetUtilityService', 'config', '$timeout', 'dataVisualizationService', 'Entity'];
 
-  function dataVisualization100Ctrl($scope, widgetUtilityService, config, $timeout, $http, PagedCollection, dataVisualizationService) {
+  function dataVisualization100Ctrl($scope, widgetUtilityService, config, $timeout, dataVisualizationService, Entity) {
 
     $scope.config = config;
     var _config = angular.copy(config);
-    $scope.processing = true;
 
     function _handleTranslations() {
       widgetUtilityService.checkTranslationMode($scope.$parent.model.type).then(function () {
@@ -25,11 +24,11 @@
     }
 
     function initializeChart() {
-      $scope.height = angular.element(document.querySelector('#eChart-' + $scope.config.wid))[0].clientWidth;
-      angular.element(document.querySelector('#eChart-' + $scope.config.wid)).attr('style', 'position: relative; max-height: 700px; height:' + $scope.height + 'px;');
+      $scope.height = angular.element(document.getElementById('eChart-' + $scope.config.wid))[0].clientWidth;
+      angular.element(document.getElementById('eChart-' + $scope.config.wid)).attr('style', 'position: relative; max-height: 700px; height:' + $scope.height + 'px;');
       // Dispose already rendered chart if available
       $scope.myChart && echarts.dispose($scope.myChart);
-      $scope.chartDom = angular.element(document.querySelector('#eChart-' + $scope.config.wid))[0];
+      $scope.chartDom = angular.element(document.getElementById('eChart-' + $scope.config.wid))[0];
       $scope.myChart = echarts.init($scope.chartDom, null, {
         renderer: 'canvas',
         useDirtyRect: false
@@ -56,8 +55,6 @@
         }
       }).catch(function(error) {
         console.log(error);
-      }).finally(function () {
-        $scope.processing = false;
       });
     }
 
@@ -77,8 +74,6 @@
             }
           }
         }
-      }).finally(function () {
-        $scope.processing = false;
       });
     }
     /*
@@ -113,39 +108,30 @@
       }
     };
 
+    function _createNestedObject(obj, record, keys) {
+      let current = obj;
+      for (const key of keys) {
+        if (!current[record[key]]) {
+          current[record[key]] = {};
+        }
+        current[record[key]]['$count'] = current[record[key]]['$count'] ? current[record[key]]['$count'] + record.total : record.total;
+        current = current[record[key]]; 
+      }
+      return obj;
+    }
+
     function formMapData(data) {
       const inputJSON = {
         'mapData': data
       }
 
       let formedData;
-      if ('wordCloud' === config.vizType) {
+      if (['wordCloud', 'heatMap'].indexOf(config.vizType) > -1) {
          formedData = data;
       } else {
         // Form Data for Map Rendering
         formedData = inputJSON.mapData.reduce((obj, record) => {
-          // Create Base level object
-          const level1 = record[$scope.config.l1PickListField] || 'None';
-          if (!obj[level1]) {
-            obj[level1] = {};
-          }
-
-          // Create next level object if not present
-          const level2 = record[$scope.config.l2PickListField] || 'None';
-          if (!obj[level1][level2]) {
-            obj[level1][level2] = {};
-          }
-
-          // Create new level 3 object
-          const level3 = record[$scope.config.l3PickListField] || 'None';
-          if (!obj[level1][level2][level3]) {
-            obj[level1][level2][level3] = {};
-          }
-          obj[level1][level2][level3]['$count'] = record.total;
-
-          obj[level1][level2]['$count'] = obj[level1][level2]['$count'] ? (obj[level1][level2]['$count'] + record.total) : record.total;
-
-          obj[level1]['$count'] = obj[level1]['$count'] ? (obj[level1]['$count'] + record.total) : record.total;
+          obj = _createNestedObject(obj, record, $scope.config.sunTree.mappingLevel);
 
           return obj;
         }, {});
@@ -217,6 +203,7 @@
       };
 
       $scope.option && $scope.myChart.setOption($scope.option);
+      $scope.generatingChart = false;
     }
 
     function renderTreemapData(rawData) {
@@ -267,6 +254,7 @@
         })
       );
       $scope.option && $scope.myChart.setOption($scope.option);
+      $scope.generatingChart = false;
     }
 
     function renderWordCloud(rawData) {
@@ -301,6 +289,91 @@
 
       // Render the chart
       $scope.option && $scope.myChart.setOption($scope.option);
+      $scope.generatingChart = false;
+    }
+
+    function renderHeatmap(rawData) {
+      let heatMap = {
+        moduleName: '',
+        xAxis: [],
+        yAxis: [],
+        data: []
+      };
+      let entity = new Entity($scope.config.resource);
+      entity.loadFields().then(function() {
+        $scope.fields = entity.getFormFields();
+        heatMap.moduleName = entity.descriptions.plural ? entity.descriptions.plural : entity.descriptions.singular;
+        if ($scope.fields[_config.heatMap.xAxis] && ('picklist' === $scope.fields[_config.heatMap.xAxis].type)) {
+          ($scope.fields[_config.heatMap.xAxis].options).forEach(option => {
+            heatMap.xAxis.push(option.itemValue);
+          });
+        } else if ($scope.fields[_config.heatMap.xAxis] && ('datetime' === $scope.fields[_config.heatMap.xAxis].type)) {
+
+        }
+        if ($scope.fields[_config.heatMap.yAxis] && ('picklist' === $scope.fields[_config.heatMap.yAxis].type)) {
+          ($scope.fields[_config.heatMap.yAxis].options).forEach(option => {
+            heatMap.yAxis.push(option.itemValue);
+          });
+        } else if ($scope.fields[_config.heatMap.yAxis] && ('datetime' === $scope.fields[_config.heatMap.yAxis].type)) {
+
+        }
+        let max = 0;
+        heatMap.data = rawData.map(function(data) {
+          max = data['total'] > max ? data['total'] : max;
+          return [heatMap.xAxis.indexOf(data[_config.heatMap.xAxis]), heatMap.yAxis.indexOf(data[_config.heatMap.yAxis]), data['total'] || '-'];
+        });
+
+        $scope.option = {
+          tooltip: {
+            position: 'top'
+          },
+          grid: {
+            height: '50%',
+            top: '10%'
+          },
+          xAxis: {
+            type: 'category',
+            data: heatMap.xAxis,
+            splitArea: {
+              show: true
+            }
+          },
+          yAxis: {
+            type: 'category',
+            data: heatMap.yAxis,
+            splitArea: {
+              show: true
+            }
+          },
+          visualMap: {
+            min: 0,
+            max: max,
+            calculable: true,
+            orient: 'horizontal',
+            left: 'center',
+            bottom: '15%'
+          },
+          series: [
+            {
+              name: heatMap.moduleName,
+              type: 'heatmap',
+              data: heatMap.data,
+              label: {
+                show: true
+              },
+              emphasis: {
+                itemStyle: {
+                  shadowBlur: 10,
+                  shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+              }
+            }
+          ]
+        };
+
+        $scope.option && $scope.myChart.setOption($scope.option);
+        $scope.generatingChart = false;
+      });
     }
 
     function renderSelectedChart(formedData) {
@@ -314,6 +387,9 @@
         case 'wordCloud':
           renderWordCloud(formedData);
           break;
+        case 'heatMap': 
+          renderHeatmap(formedData);
+          break;
       }
     }
 
@@ -325,13 +401,13 @@
       let define = window.define;
       window.AMDLoader = {};
       window.define = {};
+      $scope.generatingChart = true;
       dataVisualizationService.loadJs(['https://cdnjs.cloudflare.com/ajax/libs/echarts/5.6.0/echarts.min.js', 'https://cdn.jsdelivr.net/npm/echarts-wordcloud/dist/echarts-wordcloud.min.js', 'https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js']).then(function () {
-        $timeout(function () {
+        $timeout(function() {
           window.AMDLoader = loader;
           window.define = define;
           initializeChart();
-          $scope.processing = false;
-        }, 3000);
+        }, 1000);
       });
     }
 

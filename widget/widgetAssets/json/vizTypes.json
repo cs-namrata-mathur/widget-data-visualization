@@ -11,6 +11,10 @@
         {
             "type": "wordCloud",
             "title": "Word Cloud"
+        },
+        {
+            "type": "heatMap",
+            "title": "Heat Map"
         }
     ]
 }
