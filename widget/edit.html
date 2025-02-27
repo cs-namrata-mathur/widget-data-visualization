@@ -101,56 +101,22 @@
         <!-- Live Data -->
         <div data-ng-if="config.moduleType === 'Across Modules'">
             <!-- Config for Sunburst/Treemap -->
-            <div data-ng-if="['sunburst', 'treemap'].indexOf(config.vizType) > -1">
-                <!-- Level 1 -->
-                <div class="form-group"
-                    data-ng-class="{ 'has-error': editDataVisualizationForm.l1PickListField.$invalid && editDataVisualizationForm.l1PickListField.$touched }"
-                    data-ng-if="modules && config.resource">
-                    <label for="l1PickListField" class="control-label">Level 1<span class="text-danger">*</span>
-                        <span data-uib-tooltip="Select the picklist to group the records in the selected module." data-tooltip-append-to-body="true">
-                        <i class="margin-left-sm icon icon-information font-Size-13"></i>
-                        </span>
-                    </label>
-                    <select name="l1PickListField" id="l1PickListField" class="form-control"
-                        data-ng-options="field.name as field.title for field in fieldsArray | filter: { type: 'picklist' } | orderBy: 'title'"
-                        data-ng-model="config.l1PickListField" required>
-                        <option value="">Select an Option</option>
-                    </select>
-                    <div data-cs-messages="editDataVisualizationForm.l1PickListField"></div>
-                </div>
-
-                <!-- Level 2 -->
-                <div class="form-group"
-                    data-ng-class="{ 'has-error': editDataVisualizationForm.l2PickListField.$invalid && editDataVisualizationForm.l2PickListField.$touched }"
-                    data-ng-if="modules && config.resource">
-                    <label for="l2PickListField" class="control-label">Level 2<span class="text-danger">*</span>
-                        <span data-uib-tooltip="Select the picklist to group the records in the selected module." data-tooltip-append-to-body="true">
-                        <i class="margin-left-sm icon icon-information font-Size-13"></i>
-                        </span>
-                    </label>
-                    <select name="l2PickListField" id="l2PickListField" class="form-control"
-                        data-ng-options="field.name as field.title for field in fieldsArray | filter: { type: 'picklist' } | orderBy: 'title'"
-                        data-ng-model="config.l2PickListField" required>
-                        <option value="">Select an Option</option>
-                    </select>
-                    <div data-cs-messages="editDataVisualizationForm.l2PickListField"></div>
-                </div>
-
-                <!-- Level 3 -->
-                <div class="form-group"
-                    data-ng-class="{ 'has-error': editDataVisualizationForm.l3PickListField.$invalid && editDataVisualizationForm.l3PickListField.$touched }"
-                    data-ng-if="modules && config.resource">
-                    <label for="l3PickListField" class="control-label">Level 3<span class="text-danger">*</span>
-                        <span data-uib-tooltip="Select the picklist to group the records in the selected module." data-tooltip-append-to-body="true">
-                        <i class="margin-left-sm icon icon-information font-Size-13"></i>
-                        </span>
-                    </label>
-                    <select name="l3PickListField" id="l3PickListField" class="form-control"
-                        data-ng-options="field.name as field.title for field in fieldsArray | filter: { type: 'picklist' } | orderBy: 'title'"
-                        data-ng-model="config.l3PickListField" required>
-                        <option value="">Select an Option</option>
-                    </select>
-                    <div data-cs-messages="editDataVisualizationForm.l3PickListField"></div>
+            <div data-ng-if="['sunburst', 'treemap'].indexOf(config.vizType) > -1 && modules && config.resource">
+                <div data-ng-repeat="picklistField in config.sunTree.mappingLevel track by $index">
+                    <div class="form-group"
+                        data-ng-class="{ 'has-error': editDataVisualizationForm['picklistField-' + $index].$invalid && editDataVisualizationForm['picklistField-' + $index].$touched }">
+                        <label for="picklistField-{{ $index }}" class="control-label">Level {{ $index + 1 }}<span class="text-danger">*</span>
+                            <span data-uib-tooltip="Select the picklist to group the records in the selected module." data-tooltip-append-to-body="true">
+                            <i class="margin-left-sm icon icon-information font-Size-13"></i>
+                            </span>
+                        </label>
+                        <select name="picklistField-{{ $index }}" id="picklistField-{{ $index }}" class="form-control"
+                            data-ng-options="field.name as field.title for field in fieldsArray | filter: { type: 'picklist' } | orderBy: 'title'"
+                            data-ng-model="config.sunTree.mappingLevel[$index]" required>
+                            <option value="">Select an Option</option>
+                        </select>
+                        <div data-cs-messages="editDataVisualizationForm['picklistField-' + $index]"></div>
+                    </div>
                 </div>
             </div>
             <!-- Config for Word Cloud -->
@@ -165,7 +131,7 @@
                     </label>
                     <select name="wordSource" id="wordSource" class="form-control"
                         data-ng-options="field.name as field.title for field in fieldsArray | filter: filterByPicklistOrTextType | orderBy: 'title'"
-                        data-ng-model="config.wordSource" required>
+                        data-ng-model="config.wordCloud.wordSource" required>
                         <option value="">Select an Option</option>
                     </select>
                     <div data-cs-messages="editDataVisualizationForm.wordSource"></div>
@@ -183,7 +149,7 @@
                     </label>
                     <select name="xAxis" id="xAxis" class="form-control"
                         data-ng-options="field.name as field.title for field in fieldsArray | filter: filterByPicklistOrDateType | orderBy: 'title'"
-                        data-ng-model="config.xAxis" required>
+                        data-ng-model="config.heatMap.xAxis" required>
                         <option value="">Select an Option</option>
                     </select>
                     <div data-cs-messages="editDataVisualizationForm.xAxis"></div>
@@ -199,7 +165,7 @@
                         </label>
                         <select name="xAxisTimeScope" id="xAxisTimeScope" class="form-control"
                             data-ng-options="field.name as field.title for field in fieldsArray | filter: filterByPicklistOrDateType | orderBy: 'title'"
-                            data-ng-model="config.xAxisTimeScope" required>
+                            data-ng-model="config.heatMap.xAxisTimeScope" required>
                             <option value="">Select an Option</option>
                         </select>
                         <div data-cs-messages="editDataVisualizationForm.xAxisTimeScope"></div>
@@ -215,7 +181,7 @@
                     </label>
                     <select name="yAxis" id="yAxis" class="form-control"
                         data-ng-options="field.name as field.title for field in fieldsArray | filter: filterByPicklistOrDateType | orderBy: 'title'"
-                        data-ng-model="config.yAxis" required>
+                        data-ng-model="config.heatMap.yAxis" required>
                         <option value="">Select an Option</option>
                     </select>
                     <div data-cs-messages="editDataVisualizationForm.yAxis"></div>
@@ -231,7 +197,7 @@
                         </label>
                         <select name="yAxisTimeScope" id="yAxisTimeScope" class="form-control"
                             data-ng-options="field.name as field.title for field in fieldsArray | filter: filterByPicklistOrDateType | orderBy: 'title'"
-                            data-ng-model="config.yAxisTimeScope" required>
+                            data-ng-model="config.heatMap.yAxisTimeScope" required>
                             <option value="">Select an Option</option>
                         </select>
                         <div data-cs-messages="editDataVisualizationForm.yAxisTimeScope"></div>

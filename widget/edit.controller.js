@@ -8,15 +8,16 @@
     .module('cybersponse')
     .controller('editDataVisualization100Ctrl', editDataVisualization100Ctrl);
 
-  editDataVisualization100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', 'widgetUtilityService', '$timeout', 'appModulesService', 'Entity', 'dataVisualizationService'];
+  editDataVisualization100Ctrl.$inject = ['$scope', '$uibModalInstance', 'config', 'widgetUtilityService', '$timeout', 'appModulesService', 'Entity', 'dataVisualizationService', 'CommonUtils'];
 
-  function editDataVisualization100Ctrl($scope, $uibModalInstance, config, widgetUtilityService, $timeout, appModulesService, Entity, dataVisualizationService) {
+  function editDataVisualization100Ctrl($scope, $uibModalInstance, config, widgetUtilityService, $timeout, appModulesService, Entity, dataVisualizationService, CommonUtils) {
     $scope.cancel = cancel;
     $scope.save = save;
     $scope.config = config;
     $scope.loadAttributes = loadAttributes;
     $scope.onChangeModuleType = onChangeModuleType;
     $scope.config.moduleType = $scope.config.moduleType ? $scope.config.moduleType : 'Across Modules';
+    const maxLevel = 3;
 
     function _handleTranslations() {
       let widgetNameVersion = widgetUtilityService.getWidgetNameVersion($scope.$resolve.widget, $scope.$resolve.widgetBasePath);
@@ -62,6 +63,11 @@
     function init() {
       // To handle backward compatibility for widget
       _handleTranslations();
+      if(CommonUtils.isUndefined($scope.config.sunTree)) {
+        $scope.config.sunTree = {
+          mappingLevel: Array(maxLevel).fill(null)
+        };
+      }
 
       dataVisualizationService.loadVisualizationType().then(function (response) {
         $scope.config.vizList = response.data.vizTypes;

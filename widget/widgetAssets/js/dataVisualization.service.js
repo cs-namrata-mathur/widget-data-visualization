@@ -76,7 +76,7 @@
                 case 'treemap': 
                 {
                     queryObject.sort.push({
-                        field: config.l1PickListField + '.orderIndex',
+                        field: config.sunTree.mappingLevel[0] + '.orderIndex',
                         direction: 'ASC'
                     });
                     queryObject.aggregates.push({
@@ -84,43 +84,22 @@
                         field: '*',
                         alias: 'total'
                     });
-                    // Push level 1 picklist in aggregation
-                    queryObject.aggregates.push({
-                        operator: 'groupby',
-                        alias: config.l1PickListField,
-                        field: config.l1PickListField + '.itemValue'
-                    });
-                    queryObject.aggregates.push({
-                        operator: 'groupby',
-                        alias: 'l1Color',
-                        field: config.l1PickListField + '.color'
-                    });
                     queryObject.aggregates.push({
                         operator: 'groupby',
                         alias: 'orderIndex',
-                        field: config.l1PickListField + '.orderIndex'
+                        field: config.sunTree.mappingLevel[0] + '.orderIndex'
                     });
-                    // Push level 2 picklist in aggregation
-                    queryObject.aggregates.push({
-                        operator: 'groupby',
-                        alias: config.l2PickListField,
-                        field: config.l2PickListField + '.itemValue'
-                    });
-                    queryObject.aggregates.push({
-                        operator: 'groupby',
-                        alias: 'l2Color',
-                        field: config.l2PickListField + '.color'
-                    });
-                    // Push level 3 picklist in aggregation
-                    queryObject.aggregates.push({
-                        operator: 'groupby',
-                        alias: config.l3PickListField,
-                        field: config.l3PickListField + '.itemValue'
-                    });
-                    queryObject.aggregates.push({
-                        operator: 'groupby',
-                        alias: 'l3Color',
-                        field: config.l3PickListField + '.color'
+                    (config.sunTree.mappingLevel).forEach((level, index) => {
+                        queryObject.aggregates.push({
+                            operator: 'groupby',
+                            alias: level,
+                            field: level + '.itemValue'
+                        });
+                        queryObject.aggregates.push({
+                            operator: 'groupby',
+                            alias: 'l' + index + 'Color',
+                            field: level + '.color'
+                        });
                     });
                 }
                     break;
@@ -134,7 +113,7 @@
                         queryObject.aggregates.push({
                             operator: 'groupby',
                             alias: 'name',
-                            field: config.wordSource + '.itemValue'
+                            field: config.wordCloud.wordSource + '.itemValue'
                         });
                     }
                     break;
@@ -147,13 +126,13 @@
                         });
                         queryObject.aggregates.push({
                             operator: 'groupby',
-                            alias: config.xAxis,
-                            field: config.xAxis + '.itemValue'
+                            alias: config.heatMap.xAxis,
+                            field: config.heatMap.xAxis + '.itemValue'
                         });
                         queryObject.aggregates.push({
                             operator: 'groupby',
-                            alias: config.yAxis,
-                            field: config.yAxis + '.itemValue'
+                            alias: config.heatMap.yAxis,
+                            field: config.heatMap.yAxis + '.itemValue'
                         });
                     }
                     break;
