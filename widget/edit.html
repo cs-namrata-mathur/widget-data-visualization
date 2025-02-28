@@ -150,14 +150,14 @@
                     </select>
                     <div data-cs-messages="editDataVisualizationForm.xAxis"></div>
                 </div>
-                <div data-ng-if="heatMap.showTimeFormat.xAxis">
+                <div data-ng-if="config.heatMap.xAxis.dateField">
                     <div class="form-group"
                         data-ng-class="{ 'has-error': editDataVisualizationForm.xAxisTimeScope.$invalid && editDataVisualizationForm.xAxisTimeScope.$touched }"
                         data-ng-if="modules && config.resource">
                         <label for="xAxisTimeScope" class="control-label">X-axis Date Range<span class="text-danger">*</span></label>
                         <select name="xAxisTimeScope" id="xAxisTimeScope" class="form-control"
                             data-ng-options="dateRange.name as dateRange.title for dateRange in dateRanges"
-                            data-ng-model="config.heatMap.xAxis.timeScope" required>
+                            data-ng-model="config.heatMap.xAxis.timeScope" data-ng-required="config.heatMap.xAxis.dateField">
                             <option value="">Select an Option</option>
                         </select>
                         <div data-cs-messages="editDataVisualizationForm.xAxisTimeScope"></div>
@@ -165,7 +165,7 @@
                     <div class="form-group" data-ng-class="{ 'has-error': editDataVisualizationForm.xAxisDateFormat.$invalid && editDataVisualizationForm.xAxisDateFormat.$touched }">
                         <label for="xAxisDateFormat" class="control-label">X-axis Date Format<span class="text-danger">*</span></label>
                         <select name="xAxisDateFormat" id="xAxisDateFormat" class="form-control"
-                            data-ng-required="heatMap.showTimeFormat.xAxis"
+                            data-ng-required="config.heatMap.xAxis.dateField"
                             data-ng-model="config.heatMap.xAxis.dateFormat"
                             data-ng-options="dateFormat.name as dateFormat.title for dateFormat in dateFormatsC3">
                             <option value="">Select an Option</option>
@@ -184,14 +184,14 @@
                     </select>
                     <div data-cs-messages="editDataVisualizationForm.yAxis"></div>
                 </div>
-                <div data-ng-if="heatMap.showTimeFormat.yAxis">
+                <div data-ng-if="config.heatMap.yAxis.dateField">
                     <div class="form-group"
                         data-ng-class="{ 'has-error': editDataVisualizationForm.yAxisTimeScope.$invalid && editDataVisualizationForm.yAxisTimeScope.$touched }"
                         data-ng-if="modules && config.resource">
                         <label for="yAxisTimeScope" class="control-label">Y-axis Date Range<span class="text-danger">*</span></label>
                         <select name="yAxisTimeScope" id="yAxisTimeScope" class="form-control"
                             data-ng-options="dateRange.name as dateRange.title for dateRange in dateRanges"
-                            data-ng-model="config.heatMap.yAxis.timeScope" required>
+                            data-ng-model="config.heatMap.yAxis.timeScope" data-ng-required="config.heatMap.yAxis.dateField">
                             <option value="">Select an Option</option>
                         </select>
                         <div data-cs-messages="editDataVisualizationForm.yAxisTimeScope"></div>
@@ -199,7 +199,7 @@
                     <div class="form-group" data-ng-class="{ 'has-error': editDataVisualizationForm.yAxisDateFormat.$invalid && editDataVisualizationForm.yAxisDateFormat.$touched }">
                         <label for="yAxisDateFormat" class="control-label">Y-axis Date Format<span class="text-danger">*</span></label>
                         <select name="yAxisDateFormat" id="yAxisDateFormat" class="form-control"
-                            data-ng-required="heatMap.showTimeFormat.yAxis"
+                            data-ng-required="config.heatMap.yAxis.dateField"
                             data-ng-model="config.heatMap.yAxis.dateFormat"
                             data-ng-options="dateFormat.name as dateFormat.title for dateFormat in dateFormatsC3">
                             <option value="">Select an Option</option>

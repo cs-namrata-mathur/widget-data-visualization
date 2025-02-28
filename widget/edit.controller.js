@@ -18,12 +18,6 @@
     $scope.loadAttributes = loadAttributes;
     $scope.onChangeModuleType = onChangeModuleType;
     $scope.checkFieldType = checkFieldType;
-    $scope.heatMap = {
-      showTimeFormat: {
-        xAxis: false,
-        yAxis: false
-      }
-    };
     $scope.dateRanges = [{
       title: 'Monthly',
       name: 'month'
@@ -63,7 +57,7 @@
     function loadAttributes() {
       $scope.pickListFields = [];
       var entity = new Entity($scope.config.resource);
-      return entity.loadFields().then(function () {
+      entity.loadFields().then(function () {
         $scope.fieldsArray = entity.getFormFieldsArray();
         $scope.fields = entity.getFormFields();
         angular.extend($scope.fields, entity.getRelationshipFields());
@@ -82,9 +76,9 @@
       if (axis) {
         if ($scope.config.heatMap[axis]) {
           let field = _.pick((_.filter($scope.fieldsArray, function(field) { return field.name === $scope.config.heatMap[axis].field }))[0], 'name', 'type');
-          $scope.config.heatMap[axis].dateField = $scope.heatMap.showTimeFormat[axis] = ('datetime' === field.type) ? true : false;
+          $scope.config.heatMap[axis].dateField = ('datetime' === field.type) ? true : false;
         } else {
-          $scope.config.heatMap[axis].dateField = $scope.heatMap.showTimeFormat[axis] = false;
+          $scope.config.heatMap[axis].dateField = false;
         }
       }
     }
@@ -108,12 +102,7 @@
       appModulesService.load(true).then(function (modules) {
         $scope.modules = modules;
         if ($scope.config.resource) {
-          $scope.loadAttributes().then(function() {
-            if (!CommonUtils.isUndefined($scope.config.heatMap)) {
-              $scope.checkFieldType('xAxis');
-              $scope.checkFieldType('yAxis');
-            }
-          });
+          $scope.loadAttributes();
         }
       });
     }

@@ -322,10 +322,10 @@
     }
 
     /**
-     * @description this function adds up the total of objects having same xAxis & yAxis values
+     * @description This function calculates the cumulative total for objects with the same xAxis and yAxis values.
      * 
      * @param {any} rawData this is a array of object
-     * @returns  array of object with collaborative total of objects having same xAxis & yAxis values
+     * @returns  An array of objects with cumulative totals for objects sharing the same xAxis and yAxis values.
     */
     function _constructHeatmapDatetimeData(rawData) {
       const map = new Map();
