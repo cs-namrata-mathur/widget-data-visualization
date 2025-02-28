@@ -9,9 +9,9 @@
         .module('cybersponse')
         .factory('dataVisualizationService', dataVisualizationService);
 
-    dataVisualizationService.$inject = ['$q', '$http', 'Query', 'API', 'WIDGET_BASE_PATH'];
+    dataVisualizationService.$inject = ['$q', '$http', 'Query', 'API', 'ALL_RECORDS_SIZE', 'WIDGET_BASE_PATH', 'dataVisualization_VIZ_MAP_TYPES'];
 
-    function dataVisualizationService($q, $http, Query, API, WIDGET_BASE_PATH) {
+    function dataVisualizationService($q, $http, Query, API, ALL_RECORDS_SIZE, WIDGET_BASE_PATH, dataVisualization_VIZ_MAP_TYPES) {
         var service;
         var config;
         var fileCount = 0;
@@ -72,8 +72,8 @@
             };
 
             switch (config.vizType) {
-                case 'sunburst':
-                case 'treemap': 
+                case dataVisualization_VIZ_MAP_TYPES.SUNBURST:
+                case dataVisualization_VIZ_MAP_TYPES.TREE_MAP: 
                 {
                     queryObject.sort.push({
                         field: config.sunTree.mappingLevel[0] + '.orderIndex',
@@ -103,7 +103,7 @@
                     });
                 }
                     break;
-                case 'wordCloud':
+                case dataVisualization_VIZ_MAP_TYPES.WORD_CLOUD:
                     {
                         queryObject.aggregates.push({
                             operator: 'count',
@@ -117,8 +117,29 @@
                         });
                     }
                     break;
-                case 'heatMap':
+                case dataVisualization_VIZ_MAP_TYPES.HEAT_MAP:
                     {
+                        if (!config.heatMap.xAxis.dateField) {
+                            queryObject.sort.push({
+                                field: config.heatMap.xAxis.field + '.orderIndex',
+                                direction: 'ASC'
+                            });
+                            queryObject.aggregates.push({
+                                operator: 'groupby',
+                                alias: 'orderIndex',
+                                field: config.heatMap.xAxis.field + '.orderIndex'
+                            });
+                        } else if (!config.heatMap.yAxis.dateField) {
+                            queryObject.sort.push({
+                                field: config.heatMap.yAxis.field + '.orderIndex',
+                                direction: 'ASC'
+                            });
+                            queryObject.aggregates.push({
+                                operator: 'groupby',
+                                alias: 'orderIndex',
+                                field: config.heatMap.yAxis.field + '.orderIndex'
+                            });
+                        }
                         queryObject.aggregates.push({
                             operator: 'count',
                             field: '*',
@@ -126,13 +147,13 @@
                         });
                         queryObject.aggregates.push({
                             operator: 'groupby',
-                            alias: config.heatMap.xAxis,
-                            field: config.heatMap.xAxis + '.itemValue'
+                            alias: config.heatMap.xAxis.field,
+                            field: config.heatMap.xAxis.field + (config.heatMap.xAxis.dateField ? '' : '.itemValue')
                         });
                         queryObject.aggregates.push({
                             operator: 'groupby',
-                            alias: config.heatMap.yAxis,
-                            field: config.heatMap.yAxis + '.itemValue'
+                            alias: config.heatMap.yAxis.field,
+                            field: config.heatMap.yAxis.field + (config.heatMap.yAxis.dateField ? '' : '.itemValue')
                         });
                     }
                     break;
@@ -141,7 +162,7 @@
             let dataFilters = config.query.filters ? angular.copy(config.query.filters) : {};
             queryObject['filters'] = dataFilters;
             var _queryObj = new Query(queryObject);
-            $http.post(API.QUERY + resource + '?$limit=2147483647', _queryObj.getQuery(true)).then(function (response) {
+            $http.post(`${API.QUERY}${resource}?$limit=${ALL_RECORDS_SIZE}`, _queryObj.getQuery(true)).then(function (response) {
                 defer.resolve(response.data);
             }, function (error) {
                 defer.reject(error);
