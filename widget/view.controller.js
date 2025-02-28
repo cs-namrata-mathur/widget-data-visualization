@@ -8,9 +8,9 @@
     .module('cybersponse')
     .controller('dataVisualization100Ctrl', dataVisualization100Ctrl);
 
-  dataVisualization100Ctrl.$inject = ['$scope', 'widgetUtilityService', 'config', '$timeout', 'dataVisualizationService', 'Entity'];
+  dataVisualization100Ctrl.$inject = ['$scope', 'widgetUtilityService', 'config', '$timeout', 'dataVisualizationService', 'Entity', 'dataVisualization_VIZ_MAP_TYPES'];
 
-  function dataVisualization100Ctrl($scope, widgetUtilityService, config, $timeout, dataVisualizationService, Entity) {
+  function dataVisualization100Ctrl($scope, widgetUtilityService, config, $timeout, dataVisualizationService, Entity, dataVisualization_VIZ_MAP_TYPES) {
 
     $scope.config = config;
     var _config = angular.copy(config);
@@ -126,7 +126,7 @@
       }
 
       let formedData;
-      if (['wordCloud', 'heatMap'].indexOf(config.vizType) > -1) {
+      if ([dataVisualization_VIZ_MAP_TYPES.WORD_CLOUD, dataVisualization_VIZ_MAP_TYPES.HEAT_MAP].indexOf(config.vizType) > -1) {
          formedData = data;
       } else {
         // Form Data for Map Rendering
@@ -157,7 +157,7 @@
       if (!target.children) {
         target.value = source.$count || 0;
       }
-      else if ($scope.config.vizType === 'treemap') {
+      else if ($scope.config.vizType === dataVisualization_VIZ_MAP_TYPES.TREE_MAP) {
        target.children.push({
          name: basePath,
          value: source.$count
@@ -292,8 +292,64 @@
       $scope.generatingChart = false;
     }
 
+    /**
+     * @description this function converts epoch time to Month Year of Month Day format as per user selection
+     * 
+     * @param {any} rawData this is a array of objects where every object has 1/2 keys have value epoch time
+     * @param {any} heatMapConfig this parameter is used to update xAxis & yAxis data
+     * @param {any} axis it could be either 'xAxis' or 'yAxis'
+     */
+    function _updateEpochToDate(rawData, heatMapConfig, axis) {
+      rawData.forEach(data => {
+        let dateToConvert, tempDate;
+        // Convert date to Month Year format
+        if(_config.heatMap[axis].dateFormat === '%b %y') {
+          dateToConvert = new Date(data[_config.heatMap[axis].field] * 1000);
+          tempDate = dateToConvert.toLocaleString('default', { month: 'short' }).substring(0, 3) + ' ' + dateToConvert.getFullYear();
+          if (heatMapConfig[axis].indexOf(tempDate) === -1) {
+            heatMapConfig[axis].push(tempDate);
+          }
+        } else if (_config.heatMap[axis].dateFormat === '%b %e') {
+          // Convert date to Month Day Format
+          dateToConvert = new Date(data[_config.heatMap[axis].field] * 1000);
+          tempDate = dateToConvert.toLocaleString('default', { month: 'short' }).substring(0, 3) + ' ' + dateToConvert.getDate();
+          if (heatMapConfig[axis].indexOf(tempDate) === -1) {
+            heatMapConfig[axis].push(tempDate);
+          }
+        }
+        data[_config.heatMap[axis].field] = tempDate;
+      });
+    }
+
+    /**
+     * @description This function calculates the cumulative total for objects with the same xAxis and yAxis values.
+     * 
+     * @param {any} rawData this is a array of object
+     * @returns  An array of objects with cumulative totals for objects sharing the same xAxis and yAxis values.
+    */
+    function _constructHeatmapDatetimeData(rawData) {
+      const map = new Map();
+      let xAxisField = _config.heatMap.xAxis.field;
+      let yAxisField = _config.heatMap.yAxis.field;
+
+      rawData.forEach((data) => {
+          const key = `${data[xAxisField]}-${data[yAxisField]}`;
+          if (map.has(key)) {
+              map.get(key).total += data.total;
+          } else {
+            let template = {};
+            template[xAxisField] = data[xAxisField];
+            template[yAxisField] = data[yAxisField];
+            template.total = data.total;
+            map.set(key, template);
+          }
+      });
+
+      return Array.from(map.values());
+    }
+
     function renderHeatmap(rawData) {
-      let heatMap = {
+      let heatMapConfig = {
         moduleName: '',
         xAxis: [],
         yAxis: [],
@@ -302,25 +358,29 @@
       let entity = new Entity($scope.config.resource);
       entity.loadFields().then(function() {
         $scope.fields = entity.getFormFields();
-        heatMap.moduleName = entity.descriptions.plural ? entity.descriptions.plural : entity.descriptions.singular;
-        if ($scope.fields[_config.heatMap.xAxis] && ('picklist' === $scope.fields[_config.heatMap.xAxis].type)) {
-          ($scope.fields[_config.heatMap.xAxis].options).forEach(option => {
-            heatMap.xAxis.push(option.itemValue);
+        heatMapConfig.moduleName = entity.descriptions.plural ? entity.descriptions.plural : entity.descriptions.singular;
+        if ($scope.fields[_config.heatMap.xAxis.field] && ('picklist' === $scope.fields[_config.heatMap.xAxis.field].type)) {
+          ($scope.fields[_config.heatMap.xAxis.field].options).forEach(option => {
+            heatMapConfig.xAxis.push(option.itemValue);
           });
-        } else if ($scope.fields[_config.heatMap.xAxis] && ('datetime' === $scope.fields[_config.heatMap.xAxis].type)) {
-
+        } else if ($scope.fields[_config.heatMap.xAxis.field] && ('datetime' === $scope.fields[_config.heatMap.xAxis.field].type)) {
+          _updateEpochToDate(rawData, heatMapConfig, 'xAxis');
         }
-        if ($scope.fields[_config.heatMap.yAxis] && ('picklist' === $scope.fields[_config.heatMap.yAxis].type)) {
-          ($scope.fields[_config.heatMap.yAxis].options).forEach(option => {
-            heatMap.yAxis.push(option.itemValue);
+        if ($scope.fields[_config.heatMap.yAxis.field] && ('picklist' === $scope.fields[_config.heatMap.yAxis.field].type)) {
+          ($scope.fields[_config.heatMap.yAxis.field].options).forEach(option => {
+            heatMapConfig.yAxis.push(option.itemValue);
           });
-        } else if ($scope.fields[_config.heatMap.yAxis] && ('datetime' === $scope.fields[_config.heatMap.yAxis].type)) {
-
+        } else if ($scope.fields[_config.heatMap.yAxis.field] && ('datetime' === $scope.fields[_config.heatMap.yAxis.field].type)) {
+          _updateEpochToDate(rawData, heatMapConfig, 'yAxis');
         }
         let max = 0;
-        heatMap.data = rawData.map(function(data) {
+        let formedData = rawData;
+        if (_config.heatMap.xAxis.dateField || _config.heatMap.yAxis.dateField) {
+          formedData = _constructHeatmapDatetimeData(rawData);
+        }
+        heatMapConfig.data = formedData.map(function(data) {
           max = data['total'] > max ? data['total'] : max;
-          return [heatMap.xAxis.indexOf(data[_config.heatMap.xAxis]), heatMap.yAxis.indexOf(data[_config.heatMap.yAxis]), data['total'] || '-'];
+          return [heatMapConfig.xAxis.indexOf(data[_config.heatMap.xAxis.field]), heatMapConfig.yAxis.indexOf(data[_config.heatMap.yAxis.field]), data['total'] || '-'];
         });
 
         $scope.option = {
@@ -333,14 +393,14 @@
           },
           xAxis: {
             type: 'category',
-            data: heatMap.xAxis,
+            data: heatMapConfig.xAxis,
             splitArea: {
               show: true
             }
           },
           yAxis: {
             type: 'category',
-            data: heatMap.yAxis,
+            data: heatMapConfig.yAxis,
             splitArea: {
               show: true
             }
@@ -355,9 +415,9 @@
           },
           series: [
             {
-              name: heatMap.moduleName,
+              name: heatMapConfig.moduleName,
               type: 'heatmap',
-              data: heatMap.data,
+              data: heatMapConfig.data,
               label: {
                 show: true
               },
@@ -378,16 +438,16 @@
 
     function renderSelectedChart(formedData) {
       switch ($scope.config.vizType) {
-        case 'treemap':
+        case dataVisualization_VIZ_MAP_TYPES.TREE_MAP:
           renderTreemapData(formedData);
           break;
-        case 'sunburst':
+        case dataVisualization_VIZ_MAP_TYPES.SUNBURST:
           renderSunburst(formedData);
           break;
-        case 'wordCloud':
+        case dataVisualization_VIZ_MAP_TYPES.WORD_CLOUD:
           renderWordCloud(formedData);
           break;
-        case 'heatMap': 
+        case dataVisualization_VIZ_MAP_TYPES.HEAT_MAP: 
           renderHeatmap(formedData);
           break;
       }

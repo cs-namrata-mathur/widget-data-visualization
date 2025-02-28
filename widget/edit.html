@@ -101,7 +101,7 @@
         <!-- Live Data -->
         <div data-ng-if="config.moduleType === 'Across Modules'">
             <!-- Config for Sunburst/Treemap -->
-            <div data-ng-if="['sunburst', 'treemap'].indexOf(config.vizType) > -1 && modules && config.resource">
+            <div data-ng-if="[dataVisualization_VIZ_MAP_TYPES.SUNBURST, dataVisualization_VIZ_MAP_TYPES.TREE_MAP].indexOf(config.vizType) > -1 && modules && config.resource">
                 <div data-ng-repeat="picklistField in config.sunTree.mappingLevel track by $index">
                     <div class="form-group"
                         data-ng-class="{ 'has-error': editDataVisualizationForm['picklistField-' + $index].$invalid && editDataVisualizationForm['picklistField-' + $index].$touched }">
@@ -120,7 +120,7 @@
                 </div>
             </div>
             <!-- Config for Word Cloud -->
-            <div data-ng-if="'wordCloud' === config.vizType">
+            <div data-ng-if="dataVisualization_VIZ_MAP_TYPES.WORD_CLOUD === config.vizType">
                 <div class="form-group"
                     data-ng-class="{ 'has-error': editDataVisualizationForm.wordSource.$invalid && editDataVisualizationForm.wordSource.$touched }"
                     data-ng-if="modules && config.resource">
@@ -138,71 +138,75 @@
                 </div>
             </div>
             <!-- Config for Heatmap -->
-            <div data-ng-if="'heatMap' === config.vizType">
+            <div data-ng-if="dataVisualization_VIZ_MAP_TYPES.HEAT_MAP === config.vizType">
                 <div class="form-group"
                     data-ng-class="{ 'has-error': editDataVisualizationForm.xAxis.$invalid && editDataVisualizationForm.xAxis.$touched }"
                     data-ng-if="modules && config.resource">
-                    <label for="xAxis" class="control-label">X-axis<span class="text-danger">*</span>
-                        <span data-uib-tooltip="Select the picklist to group the records in the selected module." data-tooltip-append-to-body="true">
-                        <i class="margin-left-sm icon icon-information font-Size-13"></i>
-                        </span>
-                    </label>
+                    <label for="xAxis" class="control-label">X-axis<span class="text-danger">*</span></label>
                     <select name="xAxis" id="xAxis" class="form-control"
                         data-ng-options="field.name as field.title for field in fieldsArray | filter: filterByPicklistOrDateType | orderBy: 'title'"
-                        data-ng-model="config.heatMap.xAxis" required>
+                        data-ng-model="config.heatMap.xAxis.field" data-ng-change="checkFieldType('xAxis')" required>
                         <option value="">Select an Option</option>
                     </select>
                     <div data-cs-messages="editDataVisualizationForm.xAxis"></div>
                 </div>
-                <!-- <div>
+                <div data-ng-if="config.heatMap.xAxis.dateField">
                     <div class="form-group"
                         data-ng-class="{ 'has-error': editDataVisualizationForm.xAxisTimeScope.$invalid && editDataVisualizationForm.xAxisTimeScope.$touched }"
                         data-ng-if="modules && config.resource">
-                        <label for="xAxisTimeScope" class="control-label">X-axis<span class="text-danger">*</span>
-                            <span data-uib-tooltip="Select the picklist to group the records in the selected module." data-tooltip-append-to-body="true">
-                            <i class="margin-left-sm icon icon-information font-Size-13"></i>
-                            </span>
-                        </label>
+                        <label for="xAxisTimeScope" class="control-label">X-axis Date Range<span class="text-danger">*</span></label>
                         <select name="xAxisTimeScope" id="xAxisTimeScope" class="form-control"
-                            data-ng-options="field.name as field.title for field in fieldsArray | filter: filterByPicklistOrDateType | orderBy: 'title'"
-                            data-ng-model="config.heatMap.xAxisTimeScope" required>
+                            data-ng-options="dateRange.name as dateRange.title for dateRange in dateRanges"
+                            data-ng-model="config.heatMap.xAxis.timeScope" data-ng-required="config.heatMap.xAxis.dateField">
                             <option value="">Select an Option</option>
                         </select>
                         <div data-cs-messages="editDataVisualizationForm.xAxisTimeScope"></div>
                     </div>
-                </div> -->
+                    <div class="form-group" data-ng-class="{ 'has-error': editDataVisualizationForm.xAxisDateFormat.$invalid && editDataVisualizationForm.xAxisDateFormat.$touched }">
+                        <label for="xAxisDateFormat" class="control-label">X-axis Date Format<span class="text-danger">*</span></label>
+                        <select name="xAxisDateFormat" id="xAxisDateFormat" class="form-control"
+                            data-ng-required="config.heatMap.xAxis.dateField"
+                            data-ng-model="config.heatMap.xAxis.dateFormat"
+                            data-ng-options="dateFormat.name as dateFormat.title for dateFormat in dateFormatsC3">
+                            <option value="">Select an Option</option>
+                        </select>
+                        <div data-cs-messages="editDataVisualizationForm.xAxisDateFormat"></div>
+                    </div>
+                </div>
                 <div class="form-group"
                     data-ng-class="{ 'has-error': editDataVisualizationForm.yAxis.$invalid && editDataVisualizationForm.yAxis.$touched }"
                     data-ng-if="modules && config.resource">
-                    <label for="yAxis" class="control-label">Y-axis<span class="text-danger">*</span>
-                        <span data-uib-tooltip="Select the picklist to group the records in the selected module." data-tooltip-append-to-body="true">
-                        <i class="margin-left-sm icon icon-information font-Size-13"></i>
-                        </span>
-                    </label>
+                    <label for="yAxis" class="control-label">Y-axis<span class="text-danger">*</span></label>
                     <select name="yAxis" id="yAxis" class="form-control"
                         data-ng-options="field.name as field.title for field in fieldsArray | filter: filterByPicklistOrDateType | orderBy: 'title'"
-                        data-ng-model="config.heatMap.yAxis" required>
+                        data-ng-model="config.heatMap.yAxis.field" data-ng-change="checkFieldType('yAxis')" required>
                         <option value="">Select an Option</option>
                     </select>
                     <div data-cs-messages="editDataVisualizationForm.yAxis"></div>
                 </div>
-                <!-- <div>
+                <div data-ng-if="config.heatMap.yAxis.dateField">
                     <div class="form-group"
                         data-ng-class="{ 'has-error': editDataVisualizationForm.yAxisTimeScope.$invalid && editDataVisualizationForm.yAxisTimeScope.$touched }"
                         data-ng-if="modules && config.resource">
-                        <label for="yAxisTimeScope" class="control-label">X-axis<span class="text-danger">*</span>
-                            <span data-uib-tooltip="Select the picklist to group the records in the selected module." data-tooltip-append-to-body="true">
-                            <i class="margin-left-sm icon icon-information font-Size-13"></i>
-                            </span>
-                        </label>
+                        <label for="yAxisTimeScope" class="control-label">Y-axis Date Range<span class="text-danger">*</span></label>
                         <select name="yAxisTimeScope" id="yAxisTimeScope" class="form-control"
-                            data-ng-options="field.name as field.title for field in fieldsArray | filter: filterByPicklistOrDateType | orderBy: 'title'"
-                            data-ng-model="config.heatMap.yAxisTimeScope" required>
+                            data-ng-options="dateRange.name as dateRange.title for dateRange in dateRanges"
+                            data-ng-model="config.heatMap.yAxis.timeScope" data-ng-required="config.heatMap.yAxis.dateField">
                             <option value="">Select an Option</option>
                         </select>
                         <div data-cs-messages="editDataVisualizationForm.yAxisTimeScope"></div>
                     </div>
-                </div> -->
+                    <div class="form-group" data-ng-class="{ 'has-error': editDataVisualizationForm.yAxisDateFormat.$invalid && editDataVisualizationForm.yAxisDateFormat.$touched }">
+                        <label for="yAxisDateFormat" class="control-label">Y-axis Date Format<span class="text-danger">*</span></label>
+                        <select name="yAxisDateFormat" id="yAxisDateFormat" class="form-control"
+                            data-ng-required="config.heatMap.yAxis.dateField"
+                            data-ng-model="config.heatMap.yAxis.dateFormat"
+                            data-ng-options="dateFormat.name as dateFormat.title for dateFormat in dateFormatsC3">
+                            <option value="">Select an Option</option>
+                        </select>
+                        <div data-cs-messages="editDataVisualizationForm.yAxisDateFormat"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
