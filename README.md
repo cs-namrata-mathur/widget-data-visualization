@@ -8,11 +8,13 @@
 
 - **Publisher**: Fortinet  
 
-- **Compatibility**: 7.5.0 and later
+- **Compatibility**: 7.6.0 and later
 
-- **Applicable**: Dashboards
+- **Applicable**: Dashboards and Reports
 
 ## Overview
+
+Use the Data Visualization Widget to represent advanced data sets and relationships in dashboards and reports.
 
 
 
