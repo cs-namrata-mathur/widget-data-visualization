@@ -44,7 +44,7 @@ Selecting this option renders the visualization based on real-time data for the 
 | --------------- | ---------------------------------------- |
 | Source          | Select the FortiSOAR™ module whose records are to be displayed. For example, **_Alerts_**. |
 | X-Axis          | Select the field to be used as a category on the chart's horizontal axis. For example, **_Severity_**. |
-| Y-Axis          | Select the field to be used as a category on the chart's vertical axis. For example, **_Status_**. <br />If you select a DateTime field in the Y-Axis, for example, **_Created On_**, then you must specify the following additional parameters: <br /> - **Y-Axis Date Range**: Select the date range for which you want to populate the data. Choose between Monthly or Daily<br /> - **Y-Axis Date Format**: Select the date format to display the data.  Choose between Month Year or Month Day. |
+| Y-Axis          | Select the field to be used as a category on the chart's vertical axis. For example, **_Status_**. <br />If you select a DateTime field in the Y-Axis, for example, **_Created On_**, then you must specify the following additional parameters: <br /> - **Y-Axis Date Range**: Select the date range for which you want to populate the data. Choose between Monthly or Daily.<br /> - **Y-Axis Date Format**: Select the date format to display the data. Choose between Month Year or Month Day. |
 | Filter Criteria | Define the conditions to filter data so that only relevant records are retrieved and used in the visualization. |
 
 #### Sunburst and Tree Map - Get Live Data Option
@@ -63,8 +63,8 @@ Configuration for the Sunburst and Tree Map visualizations are the same
 
 | Fields          | Description                              |
 | --------------- | ---------------------------------------- |
-| Source          | Select the FortiSOAR™ module whose records are to be displayed. For example, **_Alerts_**. |
-| Word Source     | Select the picklist to group records in the selected module. For example, **_Type_**. |
+| Source          | Select the FortiSOAR™ module whose text data needs to be visualized. For example, **_Alerts_**. |
+| Word Source     | Select the picklist to group records in the selected module. For example, **_Severity_**. |
 | Filter Criteria | Define the conditions to filter data so that only relevant records are retrieved and used in the visualization. |
 
 ## Next Steps
