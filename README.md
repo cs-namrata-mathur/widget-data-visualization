@@ -14,12 +14,12 @@
 
 ## Overview
 
-Use the Data Visualization Widget to represent advanced data sets and relationships in dashboards and reports. The Data Visualization widget uses sophisticated tools and techniques to represent complex data sets in a visual format. These visualizations are helpful for revealing intricate patterns, relationships, and insights that simple charts may not convey. Currently the following visualization are included:
+Use the Data Visualization Widget to display advanced datasets and relationships in dashboards and reports. The widget leverages sophisticated tools and techniques to to present complex data visually, helping to uncover intricate patterns, relationships, and insights that simple charts may not convey. The following visualization are currently available:
 
-- **Sunburst**:  A sunburst chart visualizes a hierarchical dataset  through a series of concentric rings, where the central ring represents the root category, each successive layer represents subcategories.
-- **Heat Map**: A heatmap is a graphical representation of data that uses a system of color coding to represent data values in a matrix.
-- **Tree Map**:  A hierarchical chart that uses nested figures, usually rectangles, to display data (categories). Each category is assigned a rectangle area with the subcategory rectangles nested inside. The area of each rectangle is proportional to the data value it represents. 
-- **Word Cloud**: A word cloud is is a visual representation of text data, which are typically single words, whose importance is shown by their font size or color. The more important the word is the larger it gets displayed.
+- **Sunburst**:  A sunburst chart visualizes hierarchical data through a series of concentric rings. The central ring represents the root category, with each successive layer representing subcategories.
+- **Heat Map**: A heatmap visually represents data using color coding to display values within a matrix.
+- **Tree Map**:  A tree map visualizes hierarchical data with nested figures, usually rectangles. Each rectangle’s area is proportional to the data value it represents, with subcategories nested inside the parent category.
+- **Word Cloud**: A word cloud visually displays text data, typically consisting of individual words, with their importance indicated by font size or color. Words of greater importance are displayed in larger sizes.
 
 
 
