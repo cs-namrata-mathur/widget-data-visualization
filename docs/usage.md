@@ -37,7 +37,7 @@ For example, a Sunburst chart can visualize **_Alerts_** data, with **_Severity_
 
     A sample of a `JSON` type field is given [here](#sampleJson).
 
-8. In the **Filter Criteria** field, define the keys for filtering and retrieving the relevant data. For our example, we want to display 'Alert Data' and therefore, `Key Equals Alert_Static_Data` is added as the filter condition.  
+8. In the **Filter Criteria** field, define the keys for filtering and retrieving the relevant data. For our example, we want to display 'Alert Data'; therefore, `Key Equals Alert_Static_Data` is added as the filter condition.  
 
     ![Configuring Sunburst Visualization Using Alert Static Data](./res/sunburst-edit-staticData-01.png)  
 
@@ -63,7 +63,7 @@ The **Get Live Data** option helps visualize hierarchical data as per current da
 7. From the **Level 1** drop-down list, select the picklist to group records in the selected module. The picklist selected in **Level 1** is the **_root_** category of the hierarchical dataset appearing in the center of the circle and is used to drill-down to other hierarchical levels. For example, **_Severity_**. Successive levels represent subcategories, forming the outer circles.
 8. From the **Level 2** drop-down list, select the picklist that will be the **_second_** level of the hierarchical dataset, and appear at the second level in the circle.  For example, **_Type_**.
 9. From the **Level 3** drop-down list, select the picklist that will be the **_third_** level of the hierarchical dataset, and appear at the outer-most level in the circle.  For example, **_Status_**.
-10. (Optional) In the **Filter Criteria** field, conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization. For example, use `Status Not Equals Closed`to exclude closed alerts.  
+10. (Optional) In the **Filter Criteria** field, add conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization. For example, use `Status Not Equals Closed` to exclude closed alerts.  
   To learn more about using filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
   ![Configuring Sunburst Visualization Using Alert Static Data](./res/sunburst-edit-LiveData-01.png)    
 11. Click **Save** to save the configuration.
@@ -223,7 +223,7 @@ Following is a sample of a field that contains data in the `JSON` format, which 
 
 ## Heat Map
 
-A Heat Map chart visualizes data in a matrix, where individual values represented by a gradient of colors. For example, **_Alerts_** data can be displayed on a grid with **_Severity_** on the horizontal axis and **_Created On_** on the vertical axis, along with the date range and format for the alerts. The Heat Map will display Alerts within the specified date range, with cooler tones indicating lower severity and warmer tones indicating higher severity.
+A Heat Map chart visualizes data in a matrix, where individual values are represented by a gradient of colors. For example, **_Alerts_** data can be displayed on a grid with **_Severity_** on the horizontal axis and **_Created On_** on the vertical axis, along with the date range and format for the alerts. The Heat Map will display Alerts within the specified date range, with cooler tones indicating lower severity and warmer tones indicating higher severity.
 
 ### Using Static Data for Heat Map Visualization
 
@@ -251,7 +251,7 @@ The **Get Live Data** option visualizes data in a matrix based on real-time info
    If you select a DateTime field, from the **Y-Axis** drop-down list (such as selected in our example, i.e., the **_Created On_** field) then you must configure the following additional options:
     1. **Y-Axis Date Range**: Select the date range for which you want to populate the data. Choose between **Monthly** or **Daily**.
     2. **Y-Axis Date Format**: Select the date format to display the data. Choose between **Month Year** or **Month Day**.
-9. (Optional) In the **Filter Criteria** field, conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization.  
+9. (Optional) In the **Filter Criteria** field, add conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization.  
    To learn more about using filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
    ![Configuring Heat Map Visualization with Alert Live Data](./res/heatMap-edit-LiveData-01.png)    
 10. Click **Save** to save the configuration.
@@ -393,9 +393,9 @@ The **Get Live Data** option visualizes text data of the selected module based o
 
 7. From the **Word Source** drop-down list, select the picklist to group records in the selected module. For example, **_Severity_**. 
 
-8. (Optional) In the **Filter Criteria** field,conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization.  
+8. (Optional) In the **Filter Criteria** field, add conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization.  
    To learn more about using the filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
-   ![Configuring Word Cloud Visualization with Alert Live Data](./res/wordCloud-edit-LiveData-01.png)    
+   ![Configuring Word Cloud Visualization with Alert Live Data](./res/WordCloud-edit-LiveData-01.png)    
 
 9. Click **Save** to save the configuration.
 
