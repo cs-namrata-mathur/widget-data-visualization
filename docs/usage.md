@@ -64,8 +64,8 @@ The **Get Live Data** option helps visualize hierarchical data as per current da
 8. From the **Level 2** drop-down list, select the picklist that will be the **_second_** level of the hierarchical dataset, and appear at the second level in the circle.  For example, **_Type_**.
 9. From the **Level 3** drop-down list, select the picklist that will be the **_third_** level of the hierarchical dataset, and appear at the outer-most level in the circle.  For example, **_Status_**.
 10. (Optional) In the **Filter Criteria** field, add conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization. For example, use `Status Not Equals Closed` to exclude closed alerts.  
-  To learn more about using filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
-  ![Configuring Sunburst Visualization Using Alert Static Data](./res/sunburst-edit-LiveData-01.png)    
+ To learn more about using filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
+ ![Configuring Sunburst Visualization Using Alert Static Data](./res/sunburst-edit-LiveData-01.png)    
 11. Click **Save** to save the configuration.
 
 
@@ -74,6 +74,277 @@ The **Get Live Data** option helps visualize hierarchical data as per current da
 The following image illustrates a **Sunburst** chart visualizing Alert data grouped hierarchically with **_Severity_** appearing as the center of the circle, **_Type_** as the second circle and **_Status_** as the outermost circle:
 
 ![Displaying the Sunburst Chart on a Dashboard](./res/data-vis-sunburst-live-data.png)
+
+#### Sample JSON type field for Sunburst charts <a name="sampleJson"></a>
+
+Following is a sample of a field that contains data in the `JSON` format, which can be rendered in the Sunburst charts:
+
+```JSON
+{
+  "children": [
+    {
+      "name": "Minimal",
+      "value": 399,
+      "children": [
+        {
+          "name": "Minimal > Indicator Extracted",
+          "value": 399,
+          "children": [
+            {
+              "name": "Minimal > Indicator Extracted > Closed",
+              "value": 64,
+              "itemStyle": {
+                "color": "#157DD9"
+              }
+            },
+            {
+              "name": "Minimal > Indicator Extracted > Investigating",
+              "value": 69,
+              "itemStyle": {
+                "color": "#157DD9"
+              }
+            },
+            {
+              "name": "Minimal > Indicator Extracted > Open",
+              "value": 199,
+              "itemStyle": {
+                "color": "#157DD9"
+              }
+            },
+            {
+              "name": "Minimal > Indicator Extracted > Re-Opened",
+              "value": 67,
+              "itemStyle": {
+                "color": "#157DD9"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "#157DD9"
+          }
+        }
+      ],
+      "itemStyle": {
+        "color": "#157DD9"
+      }
+    },
+    {
+      "name": "Low",
+      "value": 391,
+      "children": [
+        {
+          "name": "Low > Indicator Extracted",
+          "value": 390,
+          "children": [
+            {
+              "name": "Low > Indicator Extracted > Closed",
+              "value": 49,
+              "itemStyle": {
+                "color": "#28B35C"
+              }
+            },
+            {
+              "name": "Low > Indicator Extracted > Investigating",
+              "value": 61,
+              "itemStyle": {
+                "color": "#28B35C"
+              }
+            },
+            {
+              "name": "Low > Indicator Extracted > Open",
+              "value": 214,
+              "itemStyle": {
+                "color": "#28B35C"
+              }
+            },
+            {
+              "name": "Low > Indicator Extracted > Re-Opened",
+              "value": 66,
+              "itemStyle": {
+                "color": "#28B35C"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "#28B35C"
+          }
+        },
+        {
+          "name": "Low > Ready to Investigate",
+          "value": 1,
+          "children": [
+            {
+              "name": "Low > Ready to Investigate > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "#28B35C"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "#28B35C"
+          }
+        }
+      ],
+      "itemStyle": {
+        "color": "#28B35C"
+      }
+    },
+    {
+      "name": "Medium",
+      "value": 435,
+      "children": [
+        {
+          "name": "Medium > Indicator Extracted",
+          "value": 435,
+          "children": [
+            {
+              "name": "Medium > Indicator Extracted > Closed",
+              "value": 58,
+              "itemStyle": {
+                "color": "#D2AC1A"
+              }
+            },
+            {
+              "name": "Medium > Indicator Extracted > Investigating",
+              "value": 63,
+              "itemStyle": {
+                "color": "#D2AC1A"
+              }
+            },
+            {
+              "name": "Medium > Indicator Extracted > Open",
+              "value": 234,
+              "itemStyle": {
+                "color": "#D2AC1A"
+              }
+            },
+            {
+              "name": "Medium > Indicator Extracted > Pending",
+              "value": 1,
+              "itemStyle": {
+                "color": "#D2AC1A"
+              }
+            },
+            {
+              "name": "Medium > Indicator Extracted > Re-Opened",
+              "value": 79,
+              "itemStyle": {
+                "color": "#D2AC1A"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "#D2AC1A"
+          }
+        }
+      ],
+      "itemStyle": {
+        "color": "#D2AC1A"
+      }
+    },
+    {
+      "name": "High",
+      "value": 426,
+      "children": [
+        {
+          "name": "High > Indicator Extracted",
+          "value": 426,
+          "children": [
+            {
+              "name": "High > Indicator Extracted > Closed",
+              "value": 59,
+              "itemStyle": {
+                "color": "#DE7A13"
+              }
+            },
+            {
+              "name": "High > Indicator Extracted > Investigating",
+              "value": 70,
+              "itemStyle": {
+                "color": "#DE7A13"
+              }
+            },
+            {
+              "name": "High > Indicator Extracted > Open",
+              "value": 230,
+              "itemStyle": {
+                "color": "#DE7A13"
+              }
+            },
+            {
+              "name": "High > Indicator Extracted > Re-Opened",
+              "value": 67,
+              "itemStyle": {
+                "color": "#DE7A13"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "#DE7A13"
+          }
+        }
+      ],
+      "itemStyle": {
+        "color": "#DE7A13"
+      }
+    },
+    {
+      "name": "Critical",
+      "value": 409,
+      "children": [
+        {
+          "name": "Critical > Indicator Extracted",
+          "value": 409,
+          "children": [
+            {
+              "name": "Critical > Indicator Extracted > Closed",
+              "value": 86,
+              "itemStyle": {
+                "color": "#e31b1d"
+              }
+            },
+            {
+              "name": "Critical > Indicator Extracted > Investigating",
+              "value": 65,
+              "itemStyle": {
+                "color": "#e31b1d"
+              }
+            },
+            {
+              "name": "Critical > Indicator Extracted > Open",
+              "value": 194,
+              "itemStyle": {
+                "color": "#e31b1d"
+              }
+            },
+            {
+              "name": "Critical > Indicator Extracted > Pending",
+              "value": 1,
+              "itemStyle": {
+                "color": "#e31b1d"
+              }
+            },
+            {
+              "name": "Critical > Indicator Extracted > Re-Opened",
+              "value": 63,
+              "itemStyle": {
+                "color": "#e31b1d"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "#e31b1d"
+          }
+        }
+      ],
+      "itemStyle": {
+        "color": "#e31b1d"
+      }
+    }
+  ]
+}
+```
 
 ## Tree Map
 
@@ -90,6 +361,8 @@ For example, displaying a Tree Map chart that visualizes **_Alerts_** data with 
 > [!NOTE]  
 > The procedure for configuring Tree Map with static data is the same as for the Sunburst chart as described in the [Configuring the Sunburst chart with Static Data](#configureStaticData) section.
 
+A sample of a `JSON` type field is given [here](#sampleJsonTreeMap).
+
 ### Using Live Data for Tree Map Visualization
 
 The **Get Live Data** option visualizes hierarchical data based on current records. For example, it enables you to view alert data grouped by severity, type, and status in a hierarchical format.
@@ -104,120 +377,351 @@ The following image illustrates a **Tree Map** chart visualizing Alert data grou
 
 ![Displaying the Tree Map Chart on a Dashboard](./res/data-vis-treeMap-live-data.png)
 
-#### Sample JSON type field for Sunburst and Tree Map charts <a name="sampleJson"></a>
+#### Sample JSON type field for Tree Map charts <a name="sampleJsonTreeMap"></a>
 
-Following is a sample of a field that contains data in the `JSON` format, which can be rendered in the Sunburst or Tree Map charts:
+Following is a sample of a field that contains data in the `JSON` format, which can be rendered in the Tree Map charts:
 
 ```JSON
 {
-  "High": {
-    "$count": 17,
-    "Phishing": {
-      "Open": {
-        "$count": 1
-      },
-      "$count": 3,
-      "Closed": {
-        "$count": 1
-      },
-      "Investigating": {
-        "$count": 1
+  "children": [
+    {
+      "name": "Minimal",
+      "value": 399,
+      "children": [
+        {
+          "name": "Minimal > Indicator Extracted",
+          "value": 399,
+          "children": [
+            {
+              "name": "Minimal > Indicator Extracted > Closed",
+              "value": 64,
+              "itemStyle": {
+                "color": "#157DD9"
+              }
+            },
+            {
+              "name": "Minimal > Indicator Extracted > Investigating",
+              "value": 69,
+              "itemStyle": {
+                "color": "#157DD9"
+              }
+            },
+            {
+              "name": "Minimal > Indicator Extracted > Open",
+              "value": 199,
+              "itemStyle": {
+                "color": "#157DD9"
+              }
+            },
+            {
+              "name": "Minimal > Indicator Extracted > Re-Opened",
+              "value": 67,
+              "itemStyle": {
+                "color": "#157DD9"
+              }
+            },
+            {
+              "name": "Minimal > Indicator Extracted",
+              "value": 399,
+              "itemStyle": {
+                "color": "#157DD9"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "#157DD9"
+          }
+        },
+        {
+          "name": "Minimal",
+          "value": 399,
+          "itemStyle": {
+            "color": "#157DD9"
+          }
+        }
+      ],
+      "itemStyle": {
+        "color": "#157DD9"
       }
     },
-    "Beaconing": {
-      "Open": {
-        "$count": 3
-      },
-      "$count": 5,
-      "Closed": {
-        "$count": 1
-      },
-      "Investigating": {
-        "$count": 1
+    {
+      "name": "Low",
+      "value": 391,
+      "children": [
+        {
+          "name": "Low > Indicator Extracted",
+          "value": 390,
+          "children": [
+            {
+              "name": "Low > Indicator Extracted > Closed",
+              "value": 49,
+              "itemStyle": {
+                "color": "#28B35C"
+              }
+            },
+            {
+              "name": "Low > Indicator Extracted > Investigating",
+              "value": 61,
+              "itemStyle": {
+                "color": "#28B35C"
+              }
+            },
+            {
+              "name": "Low > Indicator Extracted > Open",
+              "value": 214,
+              "itemStyle": {
+                "color": "#28B35C"
+              }
+            },
+            {
+              "name": "Low > Indicator Extracted > Re-Opened",
+              "value": 66,
+              "itemStyle": {
+                "color": "#28B35C"
+              }
+            },
+            {
+              "name": "Low > Indicator Extracted",
+              "value": 390,
+              "itemStyle": {
+                "color": "#28B35C"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "#28B35C"
+          }
+        },
+        {
+          "name": "Low > Ready to Investigate",
+          "value": 1,
+          "children": [
+            {
+              "name": "Low > Ready to Investigate > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "#28B35C"
+              }
+            },
+            {
+              "name": "Low > Ready to Investigate",
+              "value": 1,
+              "itemStyle": {
+                "color": "#28B35C"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "#28B35C"
+          }
+        },
+        {
+          "name": "Low",
+          "value": 391,
+          "itemStyle": {
+            "color": "#28B35C"
+          }
+        }
+      ],
+      "itemStyle": {
+        "color": "#28B35C"
       }
     },
-    "Denial of Service": {
-      "Open": {
-        "$count": 3
-      },
-      "$count": 9,
-      "Closed": {
-        "$count": 1
-      },
-      "Investigating": {
-        "$count": 5
+    {
+      "name": "Medium",
+      "value": 435,
+      "children": [
+        {
+          "name": "Medium > Indicator Extracted",
+          "value": 435,
+          "children": [
+            {
+              "name": "Medium > Indicator Extracted > Closed",
+              "value": 58,
+              "itemStyle": {
+                "color": "#D2AC1A"
+              }
+            },
+            {
+              "name": "Medium > Indicator Extracted > Investigating",
+              "value": 63,
+              "itemStyle": {
+                "color": "#D2AC1A"
+              }
+            },
+            {
+              "name": "Medium > Indicator Extracted > Open",
+              "value": 234,
+              "itemStyle": {
+                "color": "#D2AC1A"
+              }
+            },
+            {
+              "name": "Medium > Indicator Extracted > Pending",
+              "value": 1,
+              "itemStyle": {
+                "color": "#D2AC1A"
+              }
+            },
+            {
+              "name": "Medium > Indicator Extracted > Re-Opened",
+              "value": 79,
+              "itemStyle": {
+                "color": "#D2AC1A"
+              }
+            },
+            {
+              "name": "Medium > Indicator Extracted",
+              "value": 435,
+              "itemStyle": {
+                "color": "#D2AC1A"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "#D2AC1A"
+          }
+        },
+        {
+          "name": "Medium",
+          "value": 435,
+          "itemStyle": {
+            "color": "#D2AC1A"
+          }
+        }
+      ],
+      "itemStyle": {
+        "color": "#D2AC1A"
+      }
+    },
+    {
+      "name": "High",
+      "value": 426,
+      "children": [
+        {
+          "name": "High > Indicator Extracted",
+          "value": 426,
+          "children": [
+            {
+              "name": "High > Indicator Extracted > Closed",
+              "value": 59,
+              "itemStyle": {
+                "color": "#DE7A13"
+              }
+            },
+            {
+              "name": "High > Indicator Extracted > Investigating",
+              "value": 70,
+              "itemStyle": {
+                "color": "#DE7A13"
+              }
+            },
+            {
+              "name": "High > Indicator Extracted > Open",
+              "value": 230,
+              "itemStyle": {
+                "color": "#DE7A13"
+              }
+            },
+            {
+              "name": "High > Indicator Extracted > Re-Opened",
+              "value": 67,
+              "itemStyle": {
+                "color": "#DE7A13"
+              }
+            },
+            {
+              "name": "High > Indicator Extracted",
+              "value": 426,
+              "itemStyle": {
+                "color": "#DE7A13"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "#DE7A13"
+          }
+        },
+        {
+          "name": "High",
+          "value": 426,
+          "itemStyle": {
+            "color": "#DE7A13"
+          }
+        }
+      ],
+      "itemStyle": {
+        "color": "#DE7A13"
+      }
+    },
+    {
+      "name": "Critical",
+      "value": 409,
+      "children": [
+        {
+          "name": "Critical > Indicator Extracted",
+          "value": 409,
+          "children": [
+            {
+              "name": "Critical > Indicator Extracted > Closed",
+              "value": 86,
+              "itemStyle": {
+                "color": "#e31b1d"
+              }
+            },
+            {
+              "name": "Critical > Indicator Extracted > Investigating",
+              "value": 65,
+              "itemStyle": {
+                "color": "#e31b1d"
+              }
+            },
+            {
+              "name": "Critical > Indicator Extracted > Open",
+              "value": 194,
+              "itemStyle": {
+                "color": "#e31b1d"
+              }
+            },
+            {
+              "name": "Critical > Indicator Extracted > Pending",
+              "value": 1,
+              "itemStyle": {
+                "color": "#e31b1d"
+              }
+            },
+            {
+              "name": "Critical > Indicator Extracted > Re-Opened",
+              "value": 63,
+              "itemStyle": {
+                "color": "#e31b1d"
+              }
+            },
+            {
+              "name": "Critical > Indicator Extracted",
+              "value": 409,
+              "itemStyle": {
+                "color": "#e31b1d"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "#e31b1d"
+          }
+        },
+        {
+          "name": "Critical",
+          "value": 409,
+          "itemStyle": {
+            "color": "#e31b1d"
+          }
+        }
+      ],
+      "itemStyle": {
+        "color": "#e31b1d"
       }
     }
-  },
-  "Medium": {
-    "$count": 14,
-    "Phishing": {
-      "Open": {
-        "$count": 2
-      },
-      "$count": 6,
-      "Closed": {
-        "$count": 2
-      },
-      "Investigating": {
-        "$count": 2
-      }
-    },
-    "Beaconing": {
-      "Open": {
-        "$count": 2
-      },
-      "$count": 3,
-      "Investigating": {
-        "$count": 1
-      }
-    },
-    "Denial of Service": {
-      "Open": {
-        "$count": 4
-      },
-      "$count": 5,
-      "Investigating": {
-        "$count": 1
-      }
-    }
-  },
-  "Critical": {
-    "$count": 20,
-    "Phishing": {
-      "Open": {
-        "$count": 3
-      },
-      "$count": 6,
-      "Closed": {
-        "$count": 1
-      },
-      "Investigating": {
-        "$count": 2
-      }
-    },
-    "Beaconing": {
-      "Open": {
-        "$count": 5
-      },
-      "$count": 9,
-      "Investigating": {
-        "$count": 4
-      }
-    },
-    "Denial of Service": {
-      "Open": {
-        "$count": 2
-      },
-      "$count": 5,
-      "Closed": {
-        "$count": 2
-      },
-      "Investigating": {
-        "$count": 1
-      }
-    }
-  }
+  ]
 }
 ```
 
@@ -246,11 +750,11 @@ The **Get Live Data** option visualizes data in a matrix based on real-time info
 4. In the **Title** field, specify the title of the graphical representation. 
 5. From the **Data Source** field, select the **Get Live Data** option.
 6. From the **Source** drop-down list, select the module, whose data is to be represented as a grid in the Heat Map chart. For our example, select **Alerts**.
-7. From the **X-Axis** drop-down list, select the field to be used as a category on the horizontal axis of the chart. For example, **_Severity_**. 
-8. From the **Y-Axis** drop-down list, select the field to be used as a category on the vertical axis of the chart. For example, **_Created On_**.  
-   If you select a DateTime field, from the **Y-Axis** drop-down list (such as selected in our example, i.e., the **_Created On_** field) then you must configure the following additional options:
-    1. **Y-Axis Date Range**: Select the date range for which you want to populate the data. Choose between **Monthly** or **Daily**.
-    2. **Y-Axis Date Format**: Select the date format to display the data. Choose between **Month Year** or **Month Day**.
+7. From the **X-Axis** drop-down list, select the picklist or DateTime field to be used as a category on the horizontal axis of the chart. For example, **_Severity_**. 
+8. From the **Y-Axis** drop-down list,  select the picklist or DateTime field to be used as a category on the vertical axis of the chart. For example, **_Created On_**.  
+   If you select a DateTime field, from the **X-Axis** or **Y-Axis** drop-down list (such as the **_Created On_** field is selected in our example) then you must configure the following additional options:
+    1. **X-Axis**/**Y-Axis Date Range**: Select the date range for which to populate the data. Choose between **Monthly** or **Daily**.
+    2. **X-Axis**/**Y-Axis Date Format**: Select the date format to display the data. Choose between **Month Year** or **Month Day**.
 9. (Optional) In the **Filter Criteria** field, add conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization.  
    To learn more about using filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
    ![Configuring Heat Map Visualization with Alert Live Data](./res/heatMap-edit-LiveData-01.png)    
@@ -269,81 +773,21 @@ Following is a sample of a field that contains data in the `JSON` format, which 
 ```JSON
 {
   "data": [
-    [
-      0,
-      0,
-      11
-    ],
-    [
-      0,
-      1,
-      14
-    ],
-    [
-      0,
-      2,
-      14
-    ],
-    [
-      1,
-      0,
-      13
-    ],
-    [
-      1,
-      1,
-      17
-    ],
-    [
-      1,
-      2,
-      5
-    ],
-    [
-      2,
-      0,
-      15
-    ],
-    [
-      2,
-      1,
-      22
-    ],
-    [
-      2,
-      2,
-      11
-    ],
-    [
-      3,
-      0,
-      13
-    ],
-    [
-      3,
-      1,
-      12
-    ],
-    [
-      3,
-      2,
-      6
-    ],
-    [
-      4,
-      0,
-      10
-    ],
-    [
-      4,
-      1,
-      18
-    ],
-    [
-      4,
-      2,
-      3
-    ]
+    [0, 0, 11],
+    [0, 1, 14],
+    [0, 2, 14],
+    [1, 0, 13],
+    [1, 1, 17],
+    [1, 2, 5],
+    [2, 0, 15],
+    [2, 1, 22],
+    [2, 2, 11],
+    [3, 0, 13],
+    [3, 1, 12],
+    [3, 2, 6],
+    [4, 0, 10],
+    [4, 1, 18],
+    [4, 2, 3]
   ],
   "xAxis": [
     "Minimal",
@@ -380,23 +824,15 @@ The **Get Live Data** option visualizes text data of the selected module based o
 #### Configuring the Word Cloud chart using live data
 
 1. Edit a *Dashboard*, or a *Report* and click **Add Widget**.
-
 2. Select **Data Visualization** from the list to open the **Data Visualization** widget's customization modal.
-
 3. From the **Visualization Type** drop-down list, select **Word Cloud**.
-
 4. In the **Title** field, specify the title of the graphical representation. 
-
 5. From the **Data Source** field, select the **Get Live Data** option.
-
 6. From the **Source** drop-down list, select the module, whose text data is to be visualized in the Word Cloud chart. For our example, select **Alerts**.
-
-7. From the **Word Source** drop-down list, select the picklist to group records in the selected module. For example, **_Severity_**. 
-
+7. From the **Word Source** drop-down list, select the picklist or text field to group records in the selected module as a source for generating the Word Cloud. The chosen field’s data will determine the word frequency and size. For example, **_Severity_**. 
 8. (Optional) In the **Filter Criteria** field, add conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization.  
    To learn more about using the filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
    ![Configuring Word Cloud Visualization with Alert Live Data](./res/WordCloud-edit-LiveData-01.png)    
-
 9. Click **Save** to save the configuration.
 
 ### Visualizing Alert Data in a Word Cloud Chart
