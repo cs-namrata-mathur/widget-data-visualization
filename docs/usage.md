@@ -64,8 +64,8 @@ The **Get Live Data** option helps visualize hierarchical data as per current da
 8. From the **Level 2** drop-down list, select the picklist that will be the **_second_** level of the hierarchical dataset, and appear at the second level in the circle.  For example, **_Type_**.
 9. From the **Level 3** drop-down list, select the picklist that will be the **_third_** level of the hierarchical dataset, and appear at the outer-most level in the circle.  For example, **_Status_**.
 10. (Optional) In the **Filter Criteria** field, add conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization. For example, use `Status Not Equals Closed` to exclude closed alerts.  
- To learn more about using filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
- ![Configuring Sunburst Visualization Using Alert Static Data](./res/sunburst-edit-LiveData-01.png)    
+  To learn more about using filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
+   ![Configuring Sunburst Visualization Using Alert Static Data](./res/sunburst-edit-LiveData-01.png)    
 11. Click **Save** to save the configuration.
 
 
@@ -1643,7 +1643,7 @@ The **Get Live Data** option visualizes text data of the selected module based o
 4. In the **Title** field, specify the title of the graphical representation. 
 5. From the **Data Source** field, select the **Get Live Data** option.
 6. From the **Source** drop-down list, select the module, whose text data is to be visualized in the Word Cloud chart. For our example, select **Alerts**.
-7. From the **Word Source** drop-down list, select the picklist or text field to group records in the selected module as a source for generating the Word Cloud. The chosen field’s data will determine the word frequency and size. For example, **_Severity_**. 
+7. From the **Word Source** drop-down list, select the picklist or text field to group records in the selected module as a source for generating the Word Cloud. The chosen field’s data will determine the size of the word. For example, **_Severity_**. 
 8. (Optional) In the **Filter Criteria** field, add conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization.  
    To learn more about using the filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
    ![Configuring Word Cloud Visualization with Alert Live Data](./res/WordCloud-edit-LiveData-01.png)    
