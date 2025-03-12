@@ -87,45 +87,125 @@ Following is a sample of a field that contains data in the `JSON` format, which 
       "value": 399,
       "children": [
         {
+          "name": "Minimal > Detail Extracted",
+          "value": 1,
+          "children": [
+            {
+              "name": "Minimal > Detail Extracted > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(114.6, 177, 232.2)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(67.8, 151, 224.60000000000002)"
+          }
+        },
+        {
           "name": "Minimal > Indicator Extracted",
-          "value": 399,
+          "value": 394,
           "children": [
             {
               "name": "Minimal > Indicator Extracted > Closed",
               "value": 64,
               "itemStyle": {
-                "color": "#157DD9"
+                "color": "rgba(114.6, 177, 232.2)"
               }
             },
             {
               "name": "Minimal > Indicator Extracted > Investigating",
               "value": 69,
               "itemStyle": {
-                "color": "#157DD9"
+                "color": "rgba(114.6, 177, 232.2)"
               }
             },
             {
               "name": "Minimal > Indicator Extracted > Open",
-              "value": 199,
+              "value": 195,
               "itemStyle": {
-                "color": "#157DD9"
+                "color": "rgba(114.6, 177, 232.2)"
               }
             },
             {
               "name": "Minimal > Indicator Extracted > Re-Opened",
-              "value": 67,
+              "value": 66,
               "itemStyle": {
-                "color": "#157DD9"
+                "color": "rgba(114.6, 177, 232.2)"
               }
             }
           ],
           "itemStyle": {
-            "color": "#157DD9"
+            "color": "rgba(67.8, 151, 224.60000000000002)"
+          }
+        },
+        {
+          "name": "Minimal > New",
+          "value": 1,
+          "children": [
+            {
+              "name": "Minimal > New > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(114.6, 177, 232.2)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(67.8, 151, 224.60000000000002)"
+          }
+        },
+        {
+          "name": "Minimal > Ready to Investigate",
+          "value": 1,
+          "children": [
+            {
+              "name": "Minimal > Ready to Investigate > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(114.6, 177, 232.2)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(67.8, 151, 224.60000000000002)"
+          }
+        },
+        {
+          "name": "Minimal > Similar Alerts Correlated",
+          "value": 1,
+          "children": [
+            {
+              "name": "Minimal > Similar Alerts Correlated > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(114.6, 177, 232.2)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(67.8, 151, 224.60000000000002)"
+          }
+        },
+        {
+          "name": "Minimal > SLA Set",
+          "value": 1,
+          "children": [
+            {
+              "name": "Minimal > SLA Set > Re-Opened",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(114.6, 177, 232.2)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(67.8, 151, 224.60000000000002)"
           }
         }
       ],
       "itemStyle": {
-        "color": "#157DD9"
+        "color": "rgba(21, 125, 217)"
       }
     },
     {
@@ -134,60 +214,134 @@ Following is a sample of a field that contains data in the `JSON` format, which 
       "children": [
         {
           "name": "Low > Indicator Extracted",
-          "value": 390,
+          "value": 333,
           "children": [
             {
               "name": "Low > Indicator Extracted > Closed",
-              "value": 49,
+              "value": 45,
               "itemStyle": {
-                "color": "#28B35C"
+                "color": "rgba(126, 209.39999999999998, 157.2)"
               }
             },
             {
               "name": "Low > Indicator Extracted > Investigating",
-              "value": 61,
+              "value": 50,
               "itemStyle": {
-                "color": "#28B35C"
+                "color": "rgba(126, 209.39999999999998, 157.2)"
               }
             },
             {
               "name": "Low > Indicator Extracted > Open",
-              "value": 214,
+              "value": 181,
               "itemStyle": {
-                "color": "#28B35C"
+                "color": "rgba(126, 209.39999999999998, 157.2)"
               }
             },
             {
               "name": "Low > Indicator Extracted > Re-Opened",
-              "value": 66,
+              "value": 57,
               "itemStyle": {
-                "color": "#28B35C"
+                "color": "rgba(126, 209.39999999999998, 157.2)"
               }
             }
           ],
           "itemStyle": {
-            "color": "#28B35C"
+            "color": "rgba(83, 194.20000000000002, 124.60000000000001)"
           }
         },
         {
           "name": "Low > Ready to Investigate",
-          "value": 1,
+          "value": 2,
           "children": [
             {
               "name": "Low > Ready to Investigate > Open",
-              "value": 1,
+              "value": 2,
               "itemStyle": {
-                "color": "#28B35C"
+                "color": "rgba(126, 209.39999999999998, 157.2)"
               }
             }
           ],
           "itemStyle": {
-            "color": "#28B35C"
+            "color": "rgba(83, 194.20000000000002, 124.60000000000001)"
+          }
+        },
+        {
+          "name": "Low > Similar Alerts Correlated",
+          "value": 25,
+          "children": [
+            {
+              "name": "Low > Similar Alerts Correlated > Closed",
+              "value": 2,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            },
+            {
+              "name": "Low > Similar Alerts Correlated > Investigating",
+              "value": 5,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            },
+            {
+              "name": "Low > Similar Alerts Correlated > Open",
+              "value": 14,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            },
+            {
+              "name": "Low > Similar Alerts Correlated > Re-Opened",
+              "value": 4,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(83, 194.20000000000002, 124.60000000000001)"
+          }
+        },
+        {
+          "name": "Low > SLA Set",
+          "value": 31,
+          "children": [
+            {
+              "name": "Low > SLA Set > Closed",
+              "value": 2,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            },
+            {
+              "name": "Low > SLA Set > Investigating",
+              "value": 6,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            },
+            {
+              "name": "Low > SLA Set > Open",
+              "value": 18,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            },
+            {
+              "name": "Low > SLA Set > Re-Opened",
+              "value": 5,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(83, 194.20000000000002, 124.60000000000001)"
           }
         }
       ],
       "itemStyle": {
-        "color": "#28B35C"
+        "color": "rgba(40, 179, 92)"
       }
     },
     {
@@ -195,52 +349,139 @@ Following is a sample of a field that contains data in the `JSON` format, which 
       "value": 435,
       "children": [
         {
+          "name": "Medium > Detail Extracted",
+          "value": 2,
+          "children": [
+            {
+              "name": "Medium > Detail Extracted > Open",
+              "value": 2,
+              "itemStyle": {
+                "color": "rgba(228, 205.2, 117.6)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(219, 188.6, 71.8)"
+          }
+        },
+        {
           "name": "Medium > Indicator Extracted",
-          "value": 435,
+          "value": 426,
           "children": [
             {
               "name": "Medium > Indicator Extracted > Closed",
               "value": 58,
               "itemStyle": {
-                "color": "#D2AC1A"
+                "color": "rgba(228, 205.2, 117.6)"
               }
             },
             {
               "name": "Medium > Indicator Extracted > Investigating",
               "value": 63,
               "itemStyle": {
-                "color": "#D2AC1A"
+                "color": "rgba(228, 205.2, 117.6)"
               }
             },
             {
               "name": "Medium > Indicator Extracted > Open",
-              "value": 234,
+              "value": 228,
               "itemStyle": {
-                "color": "#D2AC1A"
-              }
-            },
-            {
-              "name": "Medium > Indicator Extracted > Pending",
-              "value": 1,
-              "itemStyle": {
-                "color": "#D2AC1A"
+                "color": "rgba(228, 205.2, 117.6)"
               }
             },
             {
               "name": "Medium > Indicator Extracted > Re-Opened",
-              "value": 79,
+              "value": 77,
               "itemStyle": {
-                "color": "#D2AC1A"
+                "color": "rgba(228, 205.2, 117.6)"
               }
             }
           ],
           "itemStyle": {
-            "color": "#D2AC1A"
+            "color": "rgba(219, 188.6, 71.8)"
+          }
+        },
+        {
+          "name": "Medium > New",
+          "value": 1,
+          "children": [
+            {
+              "name": "Medium > New > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(228, 205.2, 117.6)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(219, 188.6, 71.8)"
+          }
+        },
+        {
+          "name": "Medium > Ready to Investigate",
+          "value": 2,
+          "children": [
+            {
+              "name": "Medium > Ready to Investigate > Open",
+              "value": 2,
+              "itemStyle": {
+                "color": "rgba(228, 205.2, 117.6)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(219, 188.6, 71.8)"
+          }
+        },
+        {
+          "name": "Medium > Similar Alerts Correlated",
+          "value": 2,
+          "children": [
+            {
+              "name": "Medium > Similar Alerts Correlated > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(228, 205.2, 117.6)"
+              }
+            },
+            {
+              "name": "Medium > Similar Alerts Correlated > Re-Opened",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(228, 205.2, 117.6)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(219, 188.6, 71.8)"
+          }
+        },
+        {
+          "name": "Medium > SLA Set",
+          "value": 2,
+          "children": [
+            {
+              "name": "Medium > SLA Set > Pending",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(228, 205.2, 117.6)"
+              }
+            },
+            {
+              "name": "Medium > SLA Set > Re-Opened",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(228, 205.2, 117.6)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(219, 188.6, 71.8)"
           }
         }
       ],
       "itemStyle": {
-        "color": "#D2AC1A"
+        "color": "rgba(210, 172, 26)"
       }
     },
     {
@@ -249,44 +490,92 @@ Following is a sample of a field that contains data in the `JSON` format, which 
       "children": [
         {
           "name": "High > Indicator Extracted",
-          "value": 426,
+          "value": 423,
           "children": [
             {
               "name": "High > Indicator Extracted > Closed",
               "value": 59,
               "itemStyle": {
-                "color": "#DE7A13"
+                "color": "rgba(235.2, 175.2, 113.4)"
               }
             },
             {
               "name": "High > Indicator Extracted > Investigating",
-              "value": 70,
+              "value": 69,
               "itemStyle": {
-                "color": "#DE7A13"
+                "color": "rgba(235.2, 175.2, 113.4)"
               }
             },
             {
               "name": "High > Indicator Extracted > Open",
-              "value": 230,
+              "value": 229,
               "itemStyle": {
-                "color": "#DE7A13"
+                "color": "rgba(235.2, 175.2, 113.4)"
               }
             },
             {
               "name": "High > Indicator Extracted > Re-Opened",
-              "value": 67,
+              "value": 66,
               "itemStyle": {
-                "color": "#DE7A13"
+                "color": "rgba(235.2, 175.2, 113.4)"
               }
             }
           ],
           "itemStyle": {
-            "color": "#DE7A13"
+            "color": "rgba(228.60000000000002, 148.60000000000002, 66.2)"
+          }
+        },
+        {
+          "name": "High > New",
+          "value": 1,
+          "children": [
+            {
+              "name": "High > New > Re-Opened",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(235.2, 175.2, 113.4)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(228.60000000000002, 148.60000000000002, 66.2)"
+          }
+        },
+        {
+          "name": "High > Ready to Investigate",
+          "value": 1,
+          "children": [
+            {
+              "name": "High > Ready to Investigate > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(235.2, 175.2, 113.4)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(228.60000000000002, 148.60000000000002, 66.2)"
+          }
+        },
+        {
+          "name": "High > Similar Alerts Correlated",
+          "value": 1,
+          "children": [
+            {
+              "name": "High > Similar Alerts Correlated > Investigating",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(235.2, 175.2, 113.4)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(228.60000000000002, 148.60000000000002, 66.2)"
           }
         }
       ],
       "itemStyle": {
-        "color": "#DE7A13"
+        "color": "rgba(222, 122, 19)"
       }
     },
     {
@@ -294,52 +583,107 @@ Following is a sample of a field that contains data in the `JSON` format, which 
       "value": 409,
       "children": [
         {
+          "name": "Critical > Detail Extracted",
+          "value": 1,
+          "children": [
+            {
+              "name": "Critical > Detail Extracted > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(238.2, 118.2, 119.4)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(232.60000000000002, 72.6, 74.2)"
+          }
+        },
+        {
           "name": "Critical > Indicator Extracted",
-          "value": 409,
+          "value": 405,
           "children": [
             {
               "name": "Critical > Indicator Extracted > Closed",
               "value": 86,
               "itemStyle": {
-                "color": "#e31b1d"
+                "color": "rgba(238.2, 118.2, 119.4)"
               }
             },
             {
               "name": "Critical > Indicator Extracted > Investigating",
               "value": 65,
               "itemStyle": {
-                "color": "#e31b1d"
+                "color": "rgba(238.2, 118.2, 119.4)"
               }
             },
             {
               "name": "Critical > Indicator Extracted > Open",
-              "value": 194,
+              "value": 191,
               "itemStyle": {
-                "color": "#e31b1d"
+                "color": "rgba(238.2, 118.2, 119.4)"
               }
             },
             {
               "name": "Critical > Indicator Extracted > Pending",
               "value": 1,
               "itemStyle": {
-                "color": "#e31b1d"
+                "color": "rgba(238.2, 118.2, 119.4)"
               }
             },
             {
               "name": "Critical > Indicator Extracted > Re-Opened",
-              "value": 63,
+              "value": 62,
               "itemStyle": {
-                "color": "#e31b1d"
+                "color": "rgba(238.2, 118.2, 119.4)"
               }
             }
           ],
           "itemStyle": {
-            "color": "#e31b1d"
+            "color": "rgba(232.60000000000002, 72.6, 74.2)"
+          }
+        },
+        {
+          "name": "Critical > Ready to Investigate",
+          "value": 2,
+          "children": [
+            {
+              "name": "Critical > Ready to Investigate > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(238.2, 118.2, 119.4)"
+              }
+            },
+            {
+              "name": "Critical > Ready to Investigate > Re-Opened",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(238.2, 118.2, 119.4)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(232.60000000000002, 72.6, 74.2)"
+          }
+        },
+        {
+          "name": "Critical > SLA Set",
+          "value": 1,
+          "children": [
+            {
+              "name": "Critical > SLA Set > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(238.2, 118.2, 119.4)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(232.60000000000002, 72.6, 74.2)"
           }
         }
       ],
       "itemStyle": {
-        "color": "#e31b1d"
+        "color": "rgba(227, 27, 29)"
       }
     }
   ]
@@ -350,13 +694,13 @@ Following is a sample of a field that contains data in the `JSON` format, which 
 
 The Tree Map chart visualizes hierarchical data using rectangles. Each rectangle represents a category, with subcategories nested within their parent categories. The size and position of each rectangle represent the hierarchy. 
 
-For example, a Tree Map can visualize **_Alerts_** data with **_Severity_** as its ***root*** category (parent rectangle), and **_Type_** and **_Status_** as subsequent categories (nested rectangles).
+For example, a Tree Map can visualize **_Alerts_** data with **_Severity_** as its ***root*** category (parent rectangle), and **_State_** and **_Status_** as subsequent categories (nested rectangles).
 
 ### Using Static Data for Tree Map Visualization
 
 The **Record containing JSON Data** option retrieves and displays data stored in the  `JSON` format from a specific field of a module. You can also filter data that meets specific conditions.
 
-For example, displaying a Tree Map chart that visualizes **_Alerts_** data with **_Severity_** as its ***root*** category, i.e., the parent rectangle,  and **_Type_** and **_Status_** as subsequent nested rectangles.
+For example, displaying a Tree Map chart that visualizes **_Alerts_** data with **_Severity_** as its ***root*** category, i.e., the parent rectangle,  and **_State_** and **_Status_** as subsequent nested rectangles.
 
 > [!NOTE]  
 > The procedure for configuring Tree Map with static data is the same as for the Sunburst chart as described in the [Configuring the Sunburst chart with Static Data](#configureStaticData) section.
@@ -369,13 +713,13 @@ The **Get Live Data** option visualizes hierarchical data based on current recor
 
 #### Configuring the Tree Map chart with Live Data
 
-The procedure for configuring Tree Map with live data is same as for the Sunburst chart as described in the [Configuring the Sunburst Chart with Live Data](#configureLiveDataSunburst) section. Note that in a Tree Map, the levels are represented by rectangles. The picklist selected to group alert data at Level 1 will form the parent rectangle, with each successive level representing subcategories as nested rectangles. For our example,  **_Severity_** is at level 1 (parent rectangle), **_Type_** is at level 2 (nested within parent rectangle), and **_Status_** is at level 3 (nested within level 2). 
+The procedure for configuring Tree Map with live data is same as for the Sunburst chart as described in the [Configuring the Sunburst Chart with Live Data](#configureLiveDataSunburst) section. Note that in a Tree Map, the levels are represented by rectangles. The picklist selected to group alert data at Level 1 will form the parent rectangle, with each successive level representing subcategories as nested rectangles. For our example,  **_Severity_** is at level 1 (parent rectangle), **_State_** is at level 2 (nested within parent rectangle), and **_Status_** is at level 3 (nested within level 2). 
 
 ### Visualizing Alert Data in a Tree Map Chart
 
-The following image illustrates a **Tree Map** chart visualizing Alert data grouped hierarchically with **_Severity_** appearing as parent/root rectangle, **_Type_** as the second rectangle (nested inside Severity) and **_Status_** as the inner-most nested rectangle:
+The following image illustrates a **Tree Map** chart visualizing Alert data grouped hierarchically with **_Severity_** appearing as parent/root rectangle, **_State_** as the second rectangle (nested inside Severity) and **_Status_** as the inner-most nested rectangle:
 
-![Displaying the Tree Map Chart on a Dashboard](./res/data-vis-treeMap-live-data.png)
+![Displaying the Tree Map Chart on a Dashboard](./res/data-vis-tree-map-static-data.png)
 
 #### Sample JSON type field for Tree Map charts <a name="sampleJsonTreeMap"></a>
 
@@ -389,59 +733,174 @@ Following is a sample of a field that contains data in the `JSON` format, which 
       "value": 399,
       "children": [
         {
+          "name": "Minimal > Detail Extracted",
+          "value": 1,
+          "children": [
+            {
+              "name": "Minimal > Detail Extracted > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(114.6, 177, 232.2)"
+              }
+            },
+            {
+              "name": "Minimal > Detail Extracted",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(67.8, 151, 224.60000000000002)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(67.8, 151, 224.60000000000002)"
+          }
+        },
+        {
           "name": "Minimal > Indicator Extracted",
-          "value": 399,
+          "value": 394,
           "children": [
             {
               "name": "Minimal > Indicator Extracted > Closed",
               "value": 64,
               "itemStyle": {
-                "color": "#157DD9"
+                "color": "rgba(114.6, 177, 232.2)"
               }
             },
             {
               "name": "Minimal > Indicator Extracted > Investigating",
               "value": 69,
               "itemStyle": {
-                "color": "#157DD9"
+                "color": "rgba(114.6, 177, 232.2)"
               }
             },
             {
               "name": "Minimal > Indicator Extracted > Open",
-              "value": 199,
+              "value": 195,
               "itemStyle": {
-                "color": "#157DD9"
+                "color": "rgba(114.6, 177, 232.2)"
               }
             },
             {
               "name": "Minimal > Indicator Extracted > Re-Opened",
-              "value": 67,
+              "value": 66,
               "itemStyle": {
-                "color": "#157DD9"
+                "color": "rgba(114.6, 177, 232.2)"
               }
             },
             {
               "name": "Minimal > Indicator Extracted",
-              "value": 399,
+              "value": 394,
               "itemStyle": {
-                "color": "#157DD9"
+                "color": "rgba(67.8, 151, 224.60000000000002)"
               }
             }
           ],
           "itemStyle": {
-            "color": "#157DD9"
+            "color": "rgba(67.8, 151, 224.60000000000002)"
+          }
+        },
+        {
+          "name": "Minimal > New",
+          "value": 1,
+          "children": [
+            {
+              "name": "Minimal > New > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(114.6, 177, 232.2)"
+              }
+            },
+            {
+              "name": "Minimal > New",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(67.8, 151, 224.60000000000002)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(67.8, 151, 224.60000000000002)"
+          }
+        },
+        {
+          "name": "Minimal > Ready to Investigate",
+          "value": 1,
+          "children": [
+            {
+              "name": "Minimal > Ready to Investigate > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(114.6, 177, 232.2)"
+              }
+            },
+            {
+              "name": "Minimal > Ready to Investigate",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(67.8, 151, 224.60000000000002)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(67.8, 151, 224.60000000000002)"
+          }
+        },
+        {
+          "name": "Minimal > Similar Alerts Correlated",
+          "value": 1,
+          "children": [
+            {
+              "name": "Minimal > Similar Alerts Correlated > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(114.6, 177, 232.2)"
+              }
+            },
+            {
+              "name": "Minimal > Similar Alerts Correlated",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(67.8, 151, 224.60000000000002)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(67.8, 151, 224.60000000000002)"
+          }
+        },
+        {
+          "name": "Minimal > SLA Set",
+          "value": 1,
+          "children": [
+            {
+              "name": "Minimal > SLA Set > Re-Opened",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(114.6, 177, 232.2)"
+              }
+            },
+            {
+              "name": "Minimal > SLA Set",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(67.8, 151, 224.60000000000002)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(67.8, 151, 224.60000000000002)"
           }
         },
         {
           "name": "Minimal",
           "value": 399,
           "itemStyle": {
-            "color": "#157DD9"
+            "color": "rgba(21, 125, 217)"
           }
         }
       ],
       "itemStyle": {
-        "color": "#157DD9"
+        "color": "rgba(21, 125, 217)"
       }
     },
     {
@@ -450,81 +909,169 @@ Following is a sample of a field that contains data in the `JSON` format, which 
       "children": [
         {
           "name": "Low > Indicator Extracted",
-          "value": 390,
+          "value": 333,
           "children": [
             {
               "name": "Low > Indicator Extracted > Closed",
-              "value": 49,
+              "value": 45,
               "itemStyle": {
-                "color": "#28B35C"
+                "color": "rgba(126, 209.39999999999998, 157.2)"
               }
             },
             {
               "name": "Low > Indicator Extracted > Investigating",
-              "value": 61,
+              "value": 50,
               "itemStyle": {
-                "color": "#28B35C"
+                "color": "rgba(126, 209.39999999999998, 157.2)"
               }
             },
             {
               "name": "Low > Indicator Extracted > Open",
-              "value": 214,
+              "value": 181,
               "itemStyle": {
-                "color": "#28B35C"
+                "color": "rgba(126, 209.39999999999998, 157.2)"
               }
             },
             {
               "name": "Low > Indicator Extracted > Re-Opened",
-              "value": 66,
+              "value": 57,
               "itemStyle": {
-                "color": "#28B35C"
+                "color": "rgba(126, 209.39999999999998, 157.2)"
               }
             },
             {
               "name": "Low > Indicator Extracted",
-              "value": 390,
+              "value": 333,
               "itemStyle": {
-                "color": "#28B35C"
+                "color": "rgba(83, 194.20000000000002, 124.60000000000001)"
               }
             }
           ],
           "itemStyle": {
-            "color": "#28B35C"
+            "color": "rgba(83, 194.20000000000002, 124.60000000000001)"
           }
         },
         {
           "name": "Low > Ready to Investigate",
-          "value": 1,
+          "value": 2,
           "children": [
             {
               "name": "Low > Ready to Investigate > Open",
-              "value": 1,
+              "value": 2,
               "itemStyle": {
-                "color": "#28B35C"
+                "color": "rgba(126, 209.39999999999998, 157.2)"
               }
             },
             {
               "name": "Low > Ready to Investigate",
-              "value": 1,
+              "value": 2,
               "itemStyle": {
-                "color": "#28B35C"
+                "color": "rgba(83, 194.20000000000002, 124.60000000000001)"
               }
             }
           ],
           "itemStyle": {
-            "color": "#28B35C"
+            "color": "rgba(83, 194.20000000000002, 124.60000000000001)"
+          }
+        },
+        {
+          "name": "Low > Similar Alerts Correlated",
+          "value": 25,
+          "children": [
+            {
+              "name": "Low > Similar Alerts Correlated > Closed",
+              "value": 2,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            },
+            {
+              "name": "Low > Similar Alerts Correlated > Investigating",
+              "value": 5,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            },
+            {
+              "name": "Low > Similar Alerts Correlated > Open",
+              "value": 14,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            },
+            {
+              "name": "Low > Similar Alerts Correlated > Re-Opened",
+              "value": 4,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            },
+            {
+              "name": "Low > Similar Alerts Correlated",
+              "value": 25,
+              "itemStyle": {
+                "color": "rgba(83, 194.20000000000002, 124.60000000000001)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(83, 194.20000000000002, 124.60000000000001)"
+          }
+        },
+        {
+          "name": "Low > SLA Set",
+          "value": 31,
+          "children": [
+            {
+              "name": "Low > SLA Set > Closed",
+              "value": 2,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            },
+            {
+              "name": "Low > SLA Set > Investigating",
+              "value": 6,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            },
+            {
+              "name": "Low > SLA Set > Open",
+              "value": 18,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            },
+            {
+              "name": "Low > SLA Set > Re-Opened",
+              "value": 5,
+              "itemStyle": {
+                "color": "rgba(126, 209.39999999999998, 157.2)"
+              }
+            },
+            {
+              "name": "Low > SLA Set",
+              "value": 31,
+              "itemStyle": {
+                "color": "rgba(83, 194.20000000000002, 124.60000000000001)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(83, 194.20000000000002, 124.60000000000001)"
           }
         },
         {
           "name": "Low",
           "value": 391,
           "itemStyle": {
-            "color": "#28B35C"
+            "color": "rgba(40, 179, 92)"
           }
         }
       ],
       "itemStyle": {
-        "color": "#28B35C"
+        "color": "rgba(40, 179, 92)"
       }
     },
     {
@@ -532,66 +1079,188 @@ Following is a sample of a field that contains data in the `JSON` format, which 
       "value": 435,
       "children": [
         {
+          "name": "Medium > Detail Extracted",
+          "value": 2,
+          "children": [
+            {
+              "name": "Medium > Detail Extracted > Open",
+              "value": 2,
+              "itemStyle": {
+                "color": "rgba(228, 205.2, 117.6)"
+              }
+            },
+            {
+              "name": "Medium > Detail Extracted",
+              "value": 2,
+              "itemStyle": {
+                "color": "rgba(219, 188.6, 71.8)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(219, 188.6, 71.8)"
+          }
+        },
+        {
           "name": "Medium > Indicator Extracted",
-          "value": 435,
+          "value": 426,
           "children": [
             {
               "name": "Medium > Indicator Extracted > Closed",
               "value": 58,
               "itemStyle": {
-                "color": "#D2AC1A"
+                "color": "rgba(228, 205.2, 117.6)"
               }
             },
             {
               "name": "Medium > Indicator Extracted > Investigating",
               "value": 63,
               "itemStyle": {
-                "color": "#D2AC1A"
+                "color": "rgba(228, 205.2, 117.6)"
               }
             },
             {
               "name": "Medium > Indicator Extracted > Open",
-              "value": 234,
+              "value": 228,
               "itemStyle": {
-                "color": "#D2AC1A"
-              }
-            },
-            {
-              "name": "Medium > Indicator Extracted > Pending",
-              "value": 1,
-              "itemStyle": {
-                "color": "#D2AC1A"
+                "color": "rgba(228, 205.2, 117.6)"
               }
             },
             {
               "name": "Medium > Indicator Extracted > Re-Opened",
-              "value": 79,
+              "value": 77,
               "itemStyle": {
-                "color": "#D2AC1A"
+                "color": "rgba(228, 205.2, 117.6)"
               }
             },
             {
               "name": "Medium > Indicator Extracted",
-              "value": 435,
+              "value": 426,
               "itemStyle": {
-                "color": "#D2AC1A"
+                "color": "rgba(219, 188.6, 71.8)"
               }
             }
           ],
           "itemStyle": {
-            "color": "#D2AC1A"
+            "color": "rgba(219, 188.6, 71.8)"
+          }
+        },
+        {
+          "name": "Medium > New",
+          "value": 1,
+          "children": [
+            {
+              "name": "Medium > New > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(228, 205.2, 117.6)"
+              }
+            },
+            {
+              "name": "Medium > New",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(219, 188.6, 71.8)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(219, 188.6, 71.8)"
+          }
+        },
+        {
+          "name": "Medium > Ready to Investigate",
+          "value": 2,
+          "children": [
+            {
+              "name": "Medium > Ready to Investigate > Open",
+              "value": 2,
+              "itemStyle": {
+                "color": "rgba(228, 205.2, 117.6)"
+              }
+            },
+            {
+              "name": "Medium > Ready to Investigate",
+              "value": 2,
+              "itemStyle": {
+                "color": "rgba(219, 188.6, 71.8)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(219, 188.6, 71.8)"
+          }
+        },
+        {
+          "name": "Medium > Similar Alerts Correlated",
+          "value": 2,
+          "children": [
+            {
+              "name": "Medium > Similar Alerts Correlated > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(228, 205.2, 117.6)"
+              }
+            },
+            {
+              "name": "Medium > Similar Alerts Correlated > Re-Opened",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(228, 205.2, 117.6)"
+              }
+            },
+            {
+              "name": "Medium > Similar Alerts Correlated",
+              "value": 2,
+              "itemStyle": {
+                "color": "rgba(219, 188.6, 71.8)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(219, 188.6, 71.8)"
+          }
+        },
+        {
+          "name": "Medium > SLA Set",
+          "value": 2,
+          "children": [
+            {
+              "name": "Medium > SLA Set > Pending",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(228, 205.2, 117.6)"
+              }
+            },
+            {
+              "name": "Medium > SLA Set > Re-Opened",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(228, 205.2, 117.6)"
+              }
+            },
+            {
+              "name": "Medium > SLA Set",
+              "value": 2,
+              "itemStyle": {
+                "color": "rgba(219, 188.6, 71.8)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(219, 188.6, 71.8)"
           }
         },
         {
           "name": "Medium",
           "value": 435,
           "itemStyle": {
-            "color": "#D2AC1A"
+            "color": "rgba(210, 172, 26)"
           }
         }
       ],
       "itemStyle": {
-        "color": "#D2AC1A"
+        "color": "rgba(210, 172, 26)"
       }
     },
     {
@@ -600,58 +1269,127 @@ Following is a sample of a field that contains data in the `JSON` format, which 
       "children": [
         {
           "name": "High > Indicator Extracted",
-          "value": 426,
+          "value": 423,
           "children": [
             {
               "name": "High > Indicator Extracted > Closed",
               "value": 59,
               "itemStyle": {
-                "color": "#DE7A13"
+                "color": "rgba(235.2, 175.2, 113.4)"
               }
             },
             {
               "name": "High > Indicator Extracted > Investigating",
-              "value": 70,
+              "value": 69,
               "itemStyle": {
-                "color": "#DE7A13"
+                "color": "rgba(235.2, 175.2, 113.4)"
               }
             },
             {
               "name": "High > Indicator Extracted > Open",
-              "value": 230,
+              "value": 229,
               "itemStyle": {
-                "color": "#DE7A13"
+                "color": "rgba(235.2, 175.2, 113.4)"
               }
             },
             {
               "name": "High > Indicator Extracted > Re-Opened",
-              "value": 67,
+              "value": 66,
               "itemStyle": {
-                "color": "#DE7A13"
+                "color": "rgba(235.2, 175.2, 113.4)"
               }
             },
             {
               "name": "High > Indicator Extracted",
-              "value": 426,
+              "value": 423,
               "itemStyle": {
-                "color": "#DE7A13"
+                "color": "rgba(228.60000000000002, 148.60000000000002, 66.2)"
               }
             }
           ],
           "itemStyle": {
-            "color": "#DE7A13"
+            "color": "rgba(228.60000000000002, 148.60000000000002, 66.2)"
+          }
+        },
+        {
+          "name": "High > New",
+          "value": 1,
+          "children": [
+            {
+              "name": "High > New > Re-Opened",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(235.2, 175.2, 113.4)"
+              }
+            },
+            {
+              "name": "High > New",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(228.60000000000002, 148.60000000000002, 66.2)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(228.60000000000002, 148.60000000000002, 66.2)"
+          }
+        },
+        {
+          "name": "High > Ready to Investigate",
+          "value": 1,
+          "children": [
+            {
+              "name": "High > Ready to Investigate > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(235.2, 175.2, 113.4)"
+              }
+            },
+            {
+              "name": "High > Ready to Investigate",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(228.60000000000002, 148.60000000000002, 66.2)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(228.60000000000002, 148.60000000000002, 66.2)"
+          }
+        },
+        {
+          "name": "High > Similar Alerts Correlated",
+          "value": 1,
+          "children": [
+            {
+              "name": "High > Similar Alerts Correlated > Investigating",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(235.2, 175.2, 113.4)"
+              }
+            },
+            {
+              "name": "High > Similar Alerts Correlated",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(228.60000000000002, 148.60000000000002, 66.2)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(228.60000000000002, 148.60000000000002, 66.2)"
           }
         },
         {
           "name": "High",
           "value": 426,
           "itemStyle": {
-            "color": "#DE7A13"
+            "color": "rgba(222, 122, 19)"
           }
         }
       ],
       "itemStyle": {
-        "color": "#DE7A13"
+        "color": "rgba(222, 122, 19)"
       }
     },
     {
@@ -659,66 +1397,142 @@ Following is a sample of a field that contains data in the `JSON` format, which 
       "value": 409,
       "children": [
         {
+          "name": "Critical > Detail Extracted",
+          "value": 1,
+          "children": [
+            {
+              "name": "Critical > Detail Extracted > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(238.2, 118.2, 119.4)"
+              }
+            },
+            {
+              "name": "Critical > Detail Extracted",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(232.60000000000002, 72.6, 74.2)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(232.60000000000002, 72.6, 74.2)"
+          }
+        },
+        {
           "name": "Critical > Indicator Extracted",
-          "value": 409,
+          "value": 405,
           "children": [
             {
               "name": "Critical > Indicator Extracted > Closed",
               "value": 86,
               "itemStyle": {
-                "color": "#e31b1d"
+                "color": "rgba(238.2, 118.2, 119.4)"
               }
             },
             {
               "name": "Critical > Indicator Extracted > Investigating",
               "value": 65,
               "itemStyle": {
-                "color": "#e31b1d"
+                "color": "rgba(238.2, 118.2, 119.4)"
               }
             },
             {
               "name": "Critical > Indicator Extracted > Open",
-              "value": 194,
+              "value": 191,
               "itemStyle": {
-                "color": "#e31b1d"
+                "color": "rgba(238.2, 118.2, 119.4)"
               }
             },
             {
               "name": "Critical > Indicator Extracted > Pending",
               "value": 1,
               "itemStyle": {
-                "color": "#e31b1d"
+                "color": "rgba(238.2, 118.2, 119.4)"
               }
             },
             {
               "name": "Critical > Indicator Extracted > Re-Opened",
-              "value": 63,
+              "value": 62,
               "itemStyle": {
-                "color": "#e31b1d"
+                "color": "rgba(238.2, 118.2, 119.4)"
               }
             },
             {
               "name": "Critical > Indicator Extracted",
-              "value": 409,
+              "value": 405,
               "itemStyle": {
-                "color": "#e31b1d"
+                "color": "rgba(232.60000000000002, 72.6, 74.2)"
               }
             }
           ],
           "itemStyle": {
-            "color": "#e31b1d"
+            "color": "rgba(232.60000000000002, 72.6, 74.2)"
+          }
+        },
+        {
+          "name": "Critical > Ready to Investigate",
+          "value": 2,
+          "children": [
+            {
+              "name": "Critical > Ready to Investigate > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(238.2, 118.2, 119.4)"
+              }
+            },
+            {
+              "name": "Critical > Ready to Investigate > Re-Opened",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(238.2, 118.2, 119.4)"
+              }
+            },
+            {
+              "name": "Critical > Ready to Investigate",
+              "value": 2,
+              "itemStyle": {
+                "color": "rgba(232.60000000000002, 72.6, 74.2)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(232.60000000000002, 72.6, 74.2)"
+          }
+        },
+        {
+          "name": "Critical > SLA Set",
+          "value": 1,
+          "children": [
+            {
+              "name": "Critical > SLA Set > Open",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(238.2, 118.2, 119.4)"
+              }
+            },
+            {
+              "name": "Critical > SLA Set",
+              "value": 1,
+              "itemStyle": {
+                "color": "rgba(232.60000000000002, 72.6, 74.2)"
+              }
+            }
+          ],
+          "itemStyle": {
+            "color": "rgba(232.60000000000002, 72.6, 74.2)"
           }
         },
         {
           "name": "Critical",
           "value": 409,
           "itemStyle": {
-            "color": "#e31b1d"
+            "color": "rgba(227, 27, 29)"
           }
         }
       ],
       "itemStyle": {
-        "color": "#e31b1d"
+        "color": "rgba(227, 27, 29)"
       }
     }
   ]
