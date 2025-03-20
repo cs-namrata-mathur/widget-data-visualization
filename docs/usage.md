@@ -23,11 +23,11 @@ For example, a Sunburst chart can visualize **_Alerts_** data, with **_Severity_
 
 2. Select **Data Visualization** from the list to open the **Data Visualization** widget's customization modal.
 
-3. From the **Visualization Type** drop-down list, select **Sunburst**.
+3. In the **Title** field, specify the title of the graphical representation. 
+
+4. From the **Visualization Type** drop-down list, select **Sunburst**.
 
     ![Data Visualization Widget - Sunburst Visualization](./res/sunburst-edit-01.png)
-
-4. In the **Title** field, specify the title of the graphical representation. 
 
 5. From the **Data Source** field, select the **Record Containing JSON Data** option.
 
@@ -55,18 +55,35 @@ The **Get Live Data** option helps visualize hierarchical data as per current da
 #### Configuring the Sunburst chart with Live Data <a name="configureLiveDataSunburst"></a>
 
 1. Edit a *Dashboard*, or a *Report* and click **Add Widget**.
+
 2. Select **Data Visualization** from the list to open the **Data Visualization** widget's customization modal.
-3. From the **Visualization Type** drop-down list, select **Sunburst**.
-4. In the **Title** field, specify the title of the graphical representation. 
+
+3. In the **Title** field, specify the title of the graphical representation. 
+
+4. From the **Visualization Type** drop-down list, select **Sunburst**.
+
 5. From the **Data Source** field, select the **Get Live Data** option.
+
 6. From the **Source** drop-down list, select the module, whose data is to be represented hierarchically in the Sunburst chart. For our example, select **Alerts**.
-7. From the **Level 1** drop-down list, select the picklist to group records in the selected module. The picklist selected in **Level 1** is the **_root_** category of the hierarchical dataset appearing in the center of the circle and is used to drill-down to other hierarchical levels. For example, **_Severity_**. Successive levels represent subcategories, forming the outer circles.
+
+7. From the **Level 1** drop-down list, select the picklist to group records in the selected module. The picklist selected in **Level 1** is the **_root_** category of the hierarchical dataset appearing in the center of the circle and is used to drill-down to other hierarchical levels. For example, **_Severity_**. Successive levels represent subcategories, forming the outer circles. 
+
+   > [!TIP]  
+   > For MSSP setups, the 'Tenant' lookup field is also supported for grouping of records.
+
 8. From the **Level 2** drop-down list, select the picklist that will be the **_second_** level of the hierarchical dataset, and appear at the second level in the circle.  For example, **_Type_**.
+
 9. From the **Level 3** drop-down list, select the picklist that will be the **_third_** level of the hierarchical dataset, and appear at the outer-most level in the circle.  For example, **_Status_**.
+
 10. (Optional) In the **Filter Criteria** field, add conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization. For example, use `Status Not Equals Closed` to exclude closed alerts.  
-  To learn more about using filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
-   ![Configuring Sunburst Visualization Using Alert Static Data](./res/sunburst-edit-LiveData-01.png)    
+ To learn more about using filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
+ ![Configuring Sunburst Visualization Using Alert Static Data](./res/sunburst-edit-LiveData-01.png)    
+
 11. Click **Save** to save the configuration.
+
+
+> [!TIP]  
+> Follow the same procedure for configuring other charts using static data.
 
 
 ### Visualizing Alert Data in a Sunburst Chart
@@ -1548,7 +1565,7 @@ A Heat Map chart visualizes data in a matrix, where individual values are repres
 The **Record containing JSON Data** option retrieves and displays data stored in the  `JSON` format from a specific field of a module. You can also filter data that meets specific conditions. 
 
 > [!NOTE]  
-> The procedure for configuring Tree Map with static data is the same as for the Sunburst chart as described in the  [Configuring the Sunburst chart with Static Data](#configureStaticData) section.
+> The procedure for configuring Heat Map with static data is the same as for the Sunburst chart as described in the  [Configuring the Sunburst chart with Static Data](#configureStaticData) section.
 
 A sample of a `JSON` type field is given [here](#sampleJsonHeatMap).
 
@@ -1560,8 +1577,8 @@ The **Get Live Data** option visualizes data in a matrix based on real-time info
 
 1. Edit a *Dashboard*, or a *Report* and click **Add Widget**.
 2. Select **Data Visualization** from the list to open the **Data Visualization** widget's customization modal.
-3. From the **Visualization Type** drop-down list, select **Heat Map**.
-4. In the **Title** field, specify the title of the graphical representation. 
+3. In the **Title** field, specify the title of the graphical representation. 
+4. From the **Visualization Type** drop-down list, select **Heat Map**.
 5. From the **Data Source** field, select the **Get Live Data** option.
 6. From the **Source** drop-down list, select the module, whose data is to be represented as a grid in the Heat Map chart. For our example, select **Alerts**.
 7. From the **X-Axis** drop-down list, select the picklist or DateTime field to be used as a category on the horizontal axis of the chart. For example, **_Severity_**. 
@@ -1569,10 +1586,11 @@ The **Get Live Data** option visualizes data in a matrix based on real-time info
    If you select a DateTime field, from the **X-Axis** or **Y-Axis** drop-down list (such as the **_Created On_** field is selected in our example) then you must configure the following additional options:
     1. **X-Axis**/**Y-Axis Date Range**: Select the date range for which to populate the data. Choose between **Monthly** or **Daily**.
     2. **X-Axis**/**Y-Axis Date Format**: Select the date format to display the data. Choose between **Month Year** or **Month Day**.
-9. (Optional) In the **Filter Criteria** field, add conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization.  
+9. Define the color thresholds for the **Heat Map** visualization in the **Color Threshold** section. <br />Select the color to represent the minimum or lower level values in the grid using the **Min** picker. <br />Select the color to represent the maximum or higher level values in the grid using the **Max** picker.
+10. (Optional) In the **Filter Criteria** field, add conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization.  
    To learn more about using filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
    ![Configuring Heat Map Visualization with Alert Live Data](./res/heatMap-edit-LiveData-01.png)    
-10. Click **Save** to save the configuration.
+11. Click **Save** to save the configuration.
 
 ### Visualizing Alert Data in a Heat Map Chart
 
@@ -1639,8 +1657,8 @@ The **Get Live Data** option visualizes text data of the selected module based o
 
 1. Edit a *Dashboard*, or a *Report* and click **Add Widget**.
 2. Select **Data Visualization** from the list to open the **Data Visualization** widget's customization modal.
-3. From the **Visualization Type** drop-down list, select **Word Cloud**.
-4. In the **Title** field, specify the title of the graphical representation. 
+3. In the **Title** field, specify the title of the graphical representation. 
+4. From the **Visualization Type** drop-down list, select **Word Cloud**.
 5. From the **Data Source** field, select the **Get Live Data** option.
 6. From the **Source** drop-down list, select the module, whose text data is to be visualized in the Word Cloud chart. For our example, select **Alerts**.
 7. From the **Word Source** drop-down list, select the picklist or text field to group records in the selected module as a source for generating the Word Cloud. The chosen field’s data will determine the size of the word. For example, **_Severity_**. 
