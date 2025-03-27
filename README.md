@@ -8,7 +8,7 @@
 
 - **Publisher**: Fortinet  
 
-- **Compatibility**: 7.6.0 and later
+- **Compatibility**: 7.6.2 and later
 
 - **Applicable**: Dashboards and Reports
 
