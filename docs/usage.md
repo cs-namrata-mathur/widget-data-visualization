@@ -76,8 +76,8 @@ The **Get Live Data** option helps visualize hierarchical data as per current da
 9. From the **Level 3** drop-down list, select the picklist that will be the **_third_** level of the hierarchical dataset, and appear at the outer-most level in the circle.  For example, **_Status_**.
 
 10. (Optional) In the **Filter Criteria** field, add conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization. For example, use `Status Not Equals Closed` to exclude closed alerts.  
- To learn more about using filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
- ![Configuring Sunburst Visualization Using Alert Static Data](./res/sunburst-edit-LiveData-01.png)    
+  To learn more about using filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
+  ![Configuring Sunburst Visualization Using Alert Static Data](./res/sunburst-edit-LiveData-01.png)    
 
 11. Click **Save** to save the configuration.
 
@@ -91,6 +91,10 @@ The **Get Live Data** option helps visualize hierarchical data as per current da
 The following image illustrates a **Sunburst** chart visualizing Alert data grouped hierarchically with **_Severity_** appearing as the center of the circle, **_Type_** as the second circle and **_Status_** as the outermost circle:
 
 ![Displaying the Sunburst Chart on a Dashboard](./res/data-vis-sunburst-live-data.png)
+
+> [!NOTE]  
+> When users navigate through the hierarchy (Severity > Type > Status) and reach the third level, they can click a node in either the Sunburst or Tree Map charts. The system will then redirect them to the selected module, for example 'Alerts', with applied filters:  
+>   ![Sunburst Visualization - Alert Module filtered](./res/sunburst-module-filter.png)
 
 #### Sample JSON type field for Sunburst charts <a name="sampleJson"></a>
 
@@ -1588,7 +1592,7 @@ The **Get Live Data** option visualizes data in a matrix based on real-time info
     2. **X-Axis**/**Y-Axis Date Format**: Select the date format to display the data. Choose between **Month Year** or **Month Day**.
 9. Define the color thresholds for the **Heat Map** visualization in the **Color Threshold** section. <br />Select the color to represent the minimum or lower level values in the grid using the **Min** picker. <br />Select the color to represent the maximum or higher level values in the grid using the **Max** picker.
 10. (Optional) In the **Filter Criteria** field, add conditions (key) to filter data, ensuring only relevant records are retrieved for the visualization.  
-   To learn more about using filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
+  To learn more about using filter criteria, refer to the [Nested Filter](https://docs.fortinet.com/document/fortisoar/7.6.2/user-guide/207943/dashboards-templates-and-widgets#Nested-Filters) section of the FortiSOAR™ User Guide.  
    ![Configuring Heat Map Visualization with Alert Live Data](./res/heatMap-edit-LiveData-01.png)    
 11. Click **Save** to save the configuration.
 
